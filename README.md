@@ -1,20 +1,21 @@
 # JBlack Treasury
 
-럭셔리하고 다크한 감성의 웹사이트와 앱을 AI와 함께 세공하는 디지털 메종, **JBlack Treasury**의 공식 홈페이지입니다.
+보석처럼 세공한 웹사이트와 앱을 소장한 디지털 메종, **JBlack Treasury**의 공식 홈페이지입니다.
 
-> Luxurious. Dark. Aesthetic. And yet, real.
+> Only truth and real.
 
 ## 구성
 
 빌드 과정 없이 `index.html` 한 파일로 동작하는 정적 사이트입니다.
 
-- **Loader**: 금고 문이 열리듯 카운트업 후 걷히는 인트로
-- **Hero**: 서명처럼 써지는 골드 필기체 크레스트 로고와 WebGL 실크 배경
-- **Manifesto**: 스크롤에 따라 단어가 하나씩 켜지는 원칙 문장
+- **Intro**: 칠흑에서 시작해 보랏빛이 퍼지듯 밝아지는 약 5초 인트로, 하단에 000→100 카운트
+- **Hero**: 불 꺼진 박물관에서 보석들만 빛나는 전시실. 커서가 괴도의 손전등이 되어 전시실과 금빛 로고를 비춤
+- **Logo**: 브러시드 골드 질감과 입체 두께가 들어간 JBlack 필기체 로고
 - **On Display**: 운영 중인 JBlack Tarot, 다음 공개작 Rate Your Life
 - **The Collection**: 18개 작품을 가로로 넘겨 보는 고정 갤러리(데스크톱)와 카테고리 필터
+- **The Ledger**: 사람들이 지친 것과 트레저리의 기준
+- **Contact**: 누르면 이메일 주소(n6248129@gmail.com)가 복사됨
 - **바로가기 창**: 메뉴의 `바로가기` 버튼이나 `⌘K` / `Ctrl K`로 열고, 이름이나 키워드로 검색
-- **The Ledger / The Maison**: 브랜드 철학과 서비스 소개
 
 ## 사용한 라이브러리
 
