@@ -64,6 +64,8 @@ canvas.gemc{display:block;width:100%;height:100%}
 /* ---------- intro: deep watercolour that blooms in, then one clean sweep of light ---------- */
 .loader{position:fixed;inset:0;z-index:100;overflow:hidden;background:#030205;animation:loader-failsafe .8s 9s forwards}
 .ld-wash{position:absolute;inset:0;width:100%;height:100%;display:block;transform-origin:50% 50%}
+.ld-hall{position:absolute;inset:0;width:100%;height:100%;display:block}
+.ld-vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(125% 95% at 50% 46%,transparent 42%,rgba(2,1,4,.78) 100%)}
 html.no-intro-gl .ld-wash{background:radial-gradient(60% 60% at 30% 45%,rgba(60,18,110,.8),transparent 70%),radial-gradient(55% 55% at 72% 58%,rgba(92,14,62,.7),transparent 70%),radial-gradient(60% 50% at 50% 95%,rgba(20,22,92,.7),transparent 70%),#030205}
 .ld-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(92vw,1100px);display:flex;flex-direction:column;align-items:center;gap:clamp(18px,3vh,30px);text-align:center}
 .ld-mark{width:42px;height:42px;overflow:visible;opacity:0}
@@ -229,6 +231,8 @@ html.motion .kicker.in::before{transform:scaleX(1)}
 .ft-title{margin:20px 0 0;font-family:var(--f-display);font-weight:500;font-size:clamp(42px,5.4vw,78px);line-height:1;letter-spacing:-.025em}
 .ft-script{display:inline-block;margin:2px 0 0;padding:0 .3em 0 .06em;font-family:var(--f-script);font-size:clamp(32px,3.4vw,48px);line-height:1.5}
 .ft-copy{margin:14px 0 0;max-width:30em;color:var(--muted);font-size:15px;line-height:1.85}
+.ft-tarot .btn{margin-top:30px}
+.mosaic{filter:blur(6px) url(#mosaic);-webkit-user-select:none;user-select:none;pointer-events:none}
 .specs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;margin:28px 0 32px}
 .specs div{border-top:1px solid var(--line);padding-block:12px}
 .specs dt{font-family:var(--f-display);font-size:10.5px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--dim)}
@@ -457,6 +461,13 @@ html.h-scroll .card-end{display:flex;flex:none;width:clamp(320px,30vw,440px)}
     <radialGradient id="tarot-bg" cx=".5" cy=".42" r=".78">
       <stop offset="0" stop-color="#241840"/><stop offset=".6" stop-color="#0f0b1a"/><stop offset="1" stop-color="#07060b"/>
     </radialGradient>
+    <filter id="mosaic" x="0" y="0" width="1" height="1" color-interpolation-filters="sRGB">
+      <feFlood x="8" y="8" width="2" height="2"/>
+      <feComposite width="17" height="17"/>
+      <feTile result="grid"/>
+      <feComposite in="SourceGraphic" in2="grid" operator="in"/>
+      <feMorphology operator="dilate" radius="8.5"/>
+    </filter>
     <symbol id="hallmark" viewBox="0 0 40 40">
       <path d="M12 1.5h16l10.5 10.5v16L28 38.5H12L1.5 28V12z" fill="rgba(7,6,11,.55)" stroke="url(#hm-gold)" stroke-width="1.2"/>
       <path d="M13.2 4.5h13.6l8.7 8.7v13.6l-8.7 8.7H13.2l-8.7-8.7V13.2z" fill="none" stroke="url(#hm-gold)" stroke-width=".5" opacity=".65"/>
@@ -467,6 +478,8 @@ html.h-scroll .card-end{display:flex;flex:none;width:clamp(320px,30vw,440px)}
 
 <div class="loader" id="loader" aria-hidden="true">
   <canvas class="ld-wash" id="ld-wash"></canvas>
+  <canvas class="ld-hall" id="ld-hall"></canvas>
+  <div class="ld-vig"></div>
   <div class="ld-center">
     <svg class="ld-mark" id="ld-mark" viewBox="0 0 40 40">
       <path d="M12 1.5h16l10.5 10.5v16L28 38.5H12L1.5 28V12z"/>
@@ -549,12 +562,6 @@ html.h-scroll .card-end{display:flex;flex:none;width:clamp(320px,30vw,440px)}
               <h3 class="ft-title" data-split>JBlack Tarot</h3>
               <p class="ft-script gold-text">Cards don't lie.</p>
               <p class="ft-copy">누구나 쉽게 닿을 수 있고, 아름답고, 함께 나누는 타로. 흔들리는 마음에 평온과 안정을 남기기 위해 만든 제이블랙 트레저리의 첫 번째 작품입니다.</p>
-              <dl class="specs">
-                <div><dt>Service</dt><dd>타로 리딩 · AI 해석</dd></div>
-                <div><dt>For</dt><dd>10–30대 MZ 여성</dd></div>
-                <div><dt>Status</dt><dd>운영 중</dd></div>
-                <div><dt>Craft</dt><dd>275 Commits</dd></div>
-              </dl>
               <a class="btn btn-gold" href="https://www.jblacktarot.com/" target="_blank" rel="noopener" data-magnetic><span class="roll">jblacktarot.com 입장하기</span> <span aria-hidden="true">↗</span></a>
             </div>
             <div class="fan" aria-hidden="true"><div class="fan-in" id="fan"></div></div>
@@ -562,10 +569,14 @@ html.h-scroll .card-end{display:flex;flex:none;width:clamp(320px,30vw,440px)}
 
           <article class="ft ft-ryl" data-panel>
             <div>
+              <p class="sr">공개 전까지 내용을 가려 둔 작품입니다.</p>
+              <div class="mosaic" aria-hidden="true">
               <p class="lot-label">Lot 02 · Akoya Pearl <span class="pill sealed">Sealed</span></p>
               <h3 class="ft-title" data-split>Rate Your Life</h3>
               <p class="ft-script gold-text">Memory Museum</p>
+              </div>
               <p class="ft-quote">“당신의 인생을 전시하세요.”</p>
+              <div class="mosaic" aria-hidden="true">
               <ul class="ryl-list">
                 <li><span><b>친구 초대 · 방명록</b>내 전시관에 친구를 초대하고 방명록을 받아요.</span></li>
                 <li><span><b>월간 AI 큐레이션</b>한 달의 추억을 AI가 요약하고 점수를 매겨요.</span></li>
@@ -573,8 +584,9 @@ html.h-scroll .card-end{display:flex;flex:none;width:clamp(320px,30vw,440px)}
                 <li><span><b>인생 리포트</b>매달, 매해 얼마나 잘 살았는지 다른 사람들과 비교해 요약해요.</span></li>
               </ul>
               <p class="ft-note"><svg class="lock" viewBox="0 0 12 14" aria-hidden="true"><rect x="1.5" y="6" width="9" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.1"/><path d="M3.8 6V4.2a2.2 2.2 0 0 1 4.4 0V6" fill="none" stroke="currentColor" stroke-width="1.1"/></svg>공개 예정 · 지금 공방에서 세공 중입니다</p>
+              </div>
             </div>
-            <div class="ryl-visual">
+            <div class="ryl-visual mosaic" aria-hidden="true">
               <div class="ticket-wrap" id="ticket">
                 <figure class="ticket" aria-label="월간 리포트 예시 화면">
                   <div class="tk-main">
@@ -1056,13 +1068,18 @@ void main(){
   const subChars = splitChars($('#crest-sub'));
 
   /* ---------- the grand hall after dark ---------- */
-  const HALL = { XW: 6.4, WALL: 8, R: .62, COLH: 10.6, CAP: .8, ENT: 12.9, EYE: 2.3, ZF: 52, ZN: 4, ZS: [6, 11.5, 17, 22.5, 28, 33.5, 39, 44.5] };
+  const HALL = { XW: 6.4, WALL: 8, R: .62, COLH: 10.6, CAP: .8, ENT: 12.9, EYE: 2.3, ZF: 52,
+    ZS: [-38, -32.5, -27, -21.5, -16, -10.5, -5, .5, 6, 11.5, 17, 22.5, 28, 33.5, 39, 44.5], BEAMS: [-31, -20, -9, 2, 13, 24, 36] };
+  const CAM0 = { x: 0, y: 0, z: 0 };
   const hallGeom = (W, H) => ({ f: Math.min(H * 1.05, W * .95), cx: W / 2, cy: H * .46 });
-  function drawHall(ctx, W, H, lit) {
+  // cam lets the intro walk the same hall; the hero always draws it from cam 0
+  function drawHall(ctx, W, H, lit, cam = CAM0, glow = 1) {
     const { f, cx, cy } = hallGeom(W, H);
-    const { XW, WALL, R, COLH, CAP, ENT, EYE, ZF, ZN, ZS } = HALL;
-    const P = (x, y, z) => [cx + f * x / z, cy - f * (y - EYE) / z];
-    const fog = z => Math.max(.08, Math.min(1, 1.12 - z / 48));
+    const { XW, WALL, R, COLH, CAP, ENT, EYE, ZF, ZS, BEAMS } = HALL;
+    const cz = cam.z, D = z => Math.max(.05, z - cz);
+    const P = (x, y, z) => [cx + f * (x - cam.x) / D(z), cy - f * (y - EYE - cam.y) / D(z)];
+    const zn = cz + 1.2, zv = cz + 4;
+    const fog = z => Math.max(.08, Math.min(1, 1.12 - D(z) / 48));
     const A = a => Math.max(0, a).toFixed(3);
     const stone = (z, k = 0) => lit
       ? `rgba(${58 + k * 50 | 0},${50 + k * 44 | 0},${78 + k * 56 | 0},${A(.55 + .4 * fog(z))})`
@@ -1076,41 +1093,41 @@ void main(){
 
     // far wall and the glowing vault door
     fill([P(-WALL, 0, ZF), P(-WALL, ENT + XW + 2, ZF), P(WALL, ENT + XW + 2, ZF), P(WALL, 0, ZF)], stone(ZF));
-    const pc = P(0, 5.2, ZF), pr = f * 2.3 / ZF, pb = P(-2.3, 0, ZF);
+    const pc = P(0, 5.2, ZF), pr = f * 2.3 / D(ZF), pb = P(-2.3, 0, ZF);
     ctx.beginPath(); ctx.moveTo(pb[0], pb[1]); ctx.lineTo(pb[0], pc[1]); ctx.arc(pc[0], pc[1], pr, Math.PI, 0); ctx.lineTo(pc[0] + pr, pb[1]); ctx.closePath();
     gr = ctx.createRadialGradient(pc[0], pc[1] + pr * .6, 0, pc[0], pc[1] + pr * .6, pr * 3.2);
-    gr.addColorStop(0, 'rgba(226,200,255,.8)'); gr.addColorStop(.35, 'rgba(150,96,250,.75)'); gr.addColorStop(1, 'rgba(60,26,150,.55)');
+    gr.addColorStop(0, `rgba(226,200,255,${A(Math.min(1, .8 * glow))})`); gr.addColorStop(.35, `rgba(150,96,250,${A(Math.min(1, .75 * glow))})`); gr.addColorStop(1, 'rgba(60,26,150,.55)');
     ctx.fillStyle = gr; ctx.fill();
     ctx.globalCompositeOperation = 'lighter';
-    gr = ctx.createRadialGradient(pc[0], pc[1], 0, pc[0], pc[1], f * 16 / ZF);
-    gr.addColorStop(0, 'rgba(140,84,255,.26)'); gr.addColorStop(1, 'rgba(140,84,255,0)');
+    gr = ctx.createRadialGradient(pc[0], pc[1], 0, pc[0], pc[1], f * 16 / D(ZF));
+    gr.addColorStop(0, `rgba(140,84,255,${A(.26 * glow)})`); gr.addColorStop(1, 'rgba(140,84,255,0)');
     ctx.fillStyle = gr; ctx.fillRect(0, 0, W, H);
     ctx.globalCompositeOperation = 'source-over';
 
     // barrel vault with coffers and transverse ribs
-    const lN = P(-XW, ENT, ZN), lF = P(-XW, ENT, ZF), rN = P(XW, ENT, ZN), vc = P(0, ENT, ZF);
-    ctx.beginPath(); ctx.moveTo(lN[0], lN[1]); ctx.lineTo(lF[0], lF[1]); ctx.arc(vc[0], vc[1], f * XW / ZF, Math.PI, 0); ctx.lineTo(rN[0], rN[1]); ctx.lineTo(rN[0], -H * 4); ctx.lineTo(lN[0], -H * 4); ctx.closePath();
+    const lN = P(-XW, ENT, zv), lF = P(-XW, ENT, ZF), rN = P(XW, ENT, zv), vc = P(0, ENT, ZF);
+    ctx.beginPath(); ctx.moveTo(lN[0], lN[1]); ctx.lineTo(lF[0], lF[1]); ctx.arc(vc[0], vc[1], f * XW / D(ZF), Math.PI, 0); ctx.lineTo(rN[0], rN[1]); ctx.lineTo(rN[0], -H * 4); ctx.lineTo(lN[0], -H * 4); ctx.closePath();
     gr = ctx.createLinearGradient(0, 0, 0, Math.max(1, vc[1]));
     gr.addColorStop(0, lit ? 'rgba(40,34,58,.96)' : 'rgba(3,2,7,.96)'); gr.addColorStop(1, lit ? 'rgba(66,58,88,.9)' : 'rgba(8,6,16,.86)');
     ctx.fillStyle = gr; ctx.fill();
     for (let a = 15; a < 180; a += 15) {
       const th = a * Math.PI / 180, x = -XW * Math.cos(th), y = ENT + XW * Math.sin(th);
-      seg(P(x, y, ZN + 2), P(x, y, ZF), gold(.1));
+      seg(P(x, y, zv + 2), P(x, y, ZF), gold(.1));
     }
-    for (let z = ZF - 2.75; z > 5; z -= 2.75) {
+    for (let z = ZF - 2.75; z > zv + 1; z -= 2.75) {
       const c = P(0, ENT, z), rib = ZS.some(s => Math.abs(s - z) < 1.4);
-      ctx.beginPath(); ctx.arc(c[0], c[1], f * XW / z, Math.PI, 0);
-      ctx.strokeStyle = rib ? stone(z, .4) : gold(.06 * fog(z)); ctx.lineWidth = rib ? Math.max(1, f * .3 / z) : 1; ctx.stroke();
-      if (rib) { ctx.beginPath(); ctx.arc(c[0], c[1], f * (XW - .16) / z, Math.PI, 0); ctx.strokeStyle = gold(.18 * fog(z)); ctx.lineWidth = 1; ctx.stroke(); }
+      ctx.beginPath(); ctx.arc(c[0], c[1], f * XW / D(z), Math.PI, 0);
+      ctx.strokeStyle = rib ? stone(z, .4) : gold(.06 * fog(z)); ctx.lineWidth = rib ? Math.max(1, f * .3 / D(z)) : 1; ctx.stroke();
+      if (rib) { ctx.beginPath(); ctx.arc(c[0], c[1], f * (XW - .16) / D(z), Math.PI, 0); ctx.strokeStyle = gold(.18 * fog(z)); ctx.lineWidth = 1; ctx.stroke(); }
     }
 
     // side walls with arched niches (their paintings are already gone)
     [-1, 1].forEach(sd => {
       const X = sd * WALL;
-      fill([P(X, 0, 1.2), P(X, 0, ZF), P(X, ENT, ZF), P(X, ENT, 1.2)], stone(30, .1));
+      fill([P(X, 0, zn), P(X, 0, ZF), P(X, ENT, ZF), P(X, ENT, zn)], stone(30, .1));
       for (let i = 0; i < ZS.length - 1; i++) {
         const zc = (ZS[i] + ZS[i + 1]) / 2 * WALL / XW, hw = 1.25, y0 = 1.4, y1 = 6.2;
-        if (zc > ZF - 2) continue;
+        if (zc > ZF - 2 || zc - cz < 8) continue;
         const pts = [P(X, y0, zc - hw), P(X, y1, zc - hw)];
         for (let k = 1; k < 12; k++) { const t = Math.PI - k * Math.PI / 12; pts.push(P(X, y1 + hw * Math.sin(t) * 1.1, zc + hw * Math.cos(t))); }
         pts.push(P(X, y1, zc + hw), P(X, y0, zc + hw));
@@ -1121,12 +1138,15 @@ void main(){
     });
 
     // polished marble floor and the vault light pooling on it
-    fill([P(-WALL, 0, 1.2), P(-WALL, 0, ZF), P(WALL, 0, ZF), P(WALL, 0, 1.2)], lit ? 'rgba(26,22,38,.95)' : 'rgba(3,2,7,.9)');
-    for (let z = 1.2, iz = 0; z < ZF; z += 1.8, iz++) for (let x = -WALL, ix = 0; x < WALL - .01; x += 1.6, ix++) {
-      if ((ix + iz) % 2) fill([P(x, 0, z), P(x + 1.6, 0, z), P(x + 1.6, 0, z + 1.8), P(x, 0, z + 1.8)], lit ? 'rgba(255,255,255,.045)' : 'rgba(255,255,255,.012)');
+    fill([P(-WALL, 0, zn), P(-WALL, 0, ZF), P(WALL, 0, ZF), P(WALL, 0, zn)], lit ? 'rgba(26,22,38,.95)' : 'rgba(3,2,7,.9)');
+    for (let iz = Math.ceil((zn - 1.2) / 1.8); 1.2 + iz * 1.8 < ZF; iz++) {
+      const z = 1.2 + iz * 1.8;
+      for (let x = -WALL, ix = 0; x < WALL - .01; x += 1.6, ix++) {
+        if (((ix + iz) % 2 + 2) % 2) fill([P(x, 0, z), P(x + 1.6, 0, z), P(x + 1.6, 0, z + 1.8), P(x, 0, z + 1.8)], lit ? 'rgba(255,255,255,.045)' : 'rgba(255,255,255,.012)');
+      }
     }
     ctx.globalCompositeOperation = 'lighter';
-    const q1 = P(-2.3, 0, ZF), q2 = P(2.3, 0, ZF), q3 = P(4.5, 0, 9), q4 = P(-4.5, 0, 9);
+    const q1 = P(-2.3, 0, ZF), q2 = P(2.3, 0, ZF), q3 = P(4.5, 0, cz + 9), q4 = P(-4.5, 0, cz + 9);
     gr = ctx.createLinearGradient(0, q1[1], 0, q3[1]);
     gr.addColorStop(0, 'rgba(160,110,255,.38)'); gr.addColorStop(1, 'rgba(160,110,255,0)');
     fill([q1, q2, q3, q4], gr);
@@ -1134,6 +1154,7 @@ void main(){
 
     // colonnade, far to near
     [...ZS].reverse().forEach(z => [-1, 1].forEach(sd => {
+      if (z - cz < .8) return;
       const X = sd * XW, fz = fog(z);
       const xa = P(X - R, 0, z)[0], xb = P(X + R, 0, z)[0], w = xb - xa;
       if (xb < -60 || xa > W + 60) return;
@@ -1165,13 +1186,14 @@ void main(){
     // entablature
     [-1, 1].forEach(sd => {
       const X = sd * XW, b0 = COLH + CAP;
-      fill([P(X, b0, ZN), P(X, b0, ZF), P(X, ENT, ZF), P(X, ENT, ZN)], stone(20, .25));
-      [b0 + .02, b0 + .55, ENT - .45, ENT - .02].forEach((y, i) => seg(P(X, y, ZN), P(X, y, ZF), gold(i % 3 ? .1 : .32)));
+      fill([P(X, b0, zv), P(X, b0, ZF), P(X, ENT, ZF), P(X, ENT, zv)], stone(20, .25));
+      [b0 + .02, b0 + .55, ENT - .45, ENT - .02].forEach((y, i) => seg(P(X, y, zv), P(X, y, ZF), gold(i % 3 ? .1 : .32)));
     });
 
     // moonlight from the clerestory
     ctx.globalCompositeOperation = 'lighter';
-    [13, 24, 36].forEach(z => {
+    BEAMS.forEach(z => {
+      if (z - cz <= 4) return;
       const a = P(-XW, ENT + 1.2, z), b = P(-XW, ENT + 1.2, z + 2.6), c = P(1.8, 0, z + 9), d = P(-.6, 0, z + 6);
       gr = ctx.createLinearGradient(a[0], a[1], (c[0] + d[0]) / 2, c[1]);
       gr.addColorStop(0, `rgba(200,190,255,${lit ? .16 : .1})`); gr.addColorStop(1, 'rgba(200,190,255,0)');
@@ -1697,11 +1719,44 @@ void main(){
     return state;
   })();
 
+  /* the walk: a confident stride down the dark hall toward the violet vault door, one heel strike at a time */
+  const ldHall = $('#ld-hall'), lctx = ldHall.getContext('2d');
+  const walk = { z: -20, glow: 1, on: true };
+  let actx = null, lastStep = -1;
+  try { const AC = window.AudioContext || window.webkitAudioContext; if (AC) { actx = new AC(); if (actx.state !== 'running') actx.resume().catch(() => {}); } } catch (e) { actx = null; }
+  const heel = () => {
+    if (!actx || actx.state !== 'running') return;
+    const sr = actx.sampleRate, buf = actx.createBuffer(1, Math.round(sr * .12), sr), d = buf.getChannelData(0);
+    for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * Math.exp(-i / (sr * .01));
+    const src = actx.createBufferSource(), bp = actx.createBiquadFilter(), g = actx.createGain(), dl = actx.createDelay(), eg = actx.createGain();
+    src.buffer = buf; bp.type = 'bandpass'; bp.frequency.value = 2300; bp.Q.value = 2.5; g.gain.value = .3; dl.delayTime.value = .16; eg.gain.value = .12;
+    src.connect(bp); bp.connect(g); g.connect(actx.destination); g.connect(dl); dl.connect(eg); eg.connect(actx.destination);
+    src.start();
+  };
+  (function walkLoop() {
+    if (!walk.on) return;
+    requestAnimationFrame(walkLoop);
+    const W = innerWidth, H = innerHeight;
+    if (ldHall.width !== W || ldHall.height !== H) { ldHall.width = W; ldHall.height = H; }
+    const step = (walk.z + 20) / 2.22, k = Math.floor(step), fr = step - k, side = k % 2 ? 1 : -1;
+    const amp = Math.min(1, -walk.z / 2), sw = Math.sin(Math.PI * fr);
+    const cam = { z: walk.z, x: .07 * sw * side * amp, y: (.05 * sw * sw - .025 - .035 * Math.exp(-fr * 10)) * amp };
+    lctx.setTransform(1, 0, 0, 1, 0, 0); lctx.clearRect(0, 0, W, H);
+    lctx.translate(W / 2, H / 2); lctx.rotate(.004 * sw * side * amp); lctx.translate(-W / 2, -H / 2);
+    drawHall(lctx, W, H, false, cam, walk.glow);
+    if (k !== lastStep && amp > .05) {
+      lastStep = k;
+      heel();
+      gsap.fromTo(walk, { glow: 1.4 }, { glow: 1, duration: .45, ease: 'power2.out', overwrite: 'auto' });
+    }
+  })();
+
   const num = $('#loader-num'), bar = $('#loader-bar'), cnt = { v: 0 };
   const truth = $('#ld-truth');
   const radii = [.98, .92, .88, .82, .7, 0];
   const tl = gsap.timeline();
-  tl.to('#ld-mark', { opacity: 1, duration: 1.4, ease: 'sine.out' }, .4)
+  tl.to(walk, { z: 0, duration: 4.6, ease: 'power1.inOut' }, .15)
+    .to('#ld-mark', { opacity: 1, duration: 1.4, ease: 'sine.out' }, .4)
     .to(cnt, { v: 100, duration: 4.4, ease: 'power1.inOut', onUpdate: () => { num.textContent = String(Math.round(cnt.v)).padStart(3, '0'); bar.style.transform = `scaleX(${cnt.v / 100})`; } }, .3)
     .fromTo(truth, { '--m': '-14%', letterSpacing: '.22em', filter: 'blur(10px) drop-shadow(0 .03em .02em rgba(0,0,0,.65))' },
       { '--m': '104%', letterSpacing: '.04em', filter: 'blur(0px) drop-shadow(0 .03em .02em rgba(0,0,0,.65))', duration: 2.6, ease: 'power2.inOut' }, .9)
@@ -1721,7 +1776,7 @@ void main(){
     .to('#ld-wash', { scale: 1.06, duration: 1.6, ease: 'sine.inOut' }, 4.8)
     .to(loader, { opacity: 0, duration: 1.4, ease: 'sine.inOut' }, 4.95)
     .add(heroIntro(), 5.0)
-    .call(() => { if (wash) wash.stop(); loader.remove(); root.classList.remove('is-loading'); if (lenis) lenis.start(); ScrollTrigger.refresh(); }, null, 6.4);
+    .call(() => { walk.on = false; if (actx) actx.close().catch(() => {}); if (wash) wash.stop(); loader.remove(); root.classList.remove('is-loading'); if (lenis) lenis.start(); ScrollTrigger.refresh(); }, null, 6.4);
 
   /* ---------- scroll choreography (created in page order) ---------- */
   gsap.fromTo('#hero-in', { yPercent: 0, scale: 1, opacity: 1 }, { yPercent: -14, scale: .94, opacity: 0, ease: 'none', immediateRender: false,
