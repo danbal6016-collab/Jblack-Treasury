@@ -431,7 +431,84 @@ html.h-scroll .card-end{display:flex;flex:none;width:clamp(320px,30vw,440px)}
 @media (hover:none){.vault-keys{display:none}}
 @media (max-width:520px){.row-act .more{display:none}.vault-head{padding:16px 16px 12px}.vault-search{margin:0 16px 6px}.vault-list{padding:4px 6px 12px}}
 
+/* ---------- members, notice, music ---------- */
+.nav-auth{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:999px;border:1px solid transparent;background:none;color:var(--muted);
+  font:500 13px/1 var(--f-sans);white-space:nowrap;transition:color .4s,border-color .4s}
+.nav-auth:hover{color:var(--gold-hi);border-color:var(--line-strong)}
+.nav-auth svg{width:15px;height:15px;flex:none}
+.nav-auth.in{color:var(--gold-hi)}
+.nav-auth.in svg{color:var(--gold)}
+.nav-auth-l{max-width:9em;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:860px){.nav-auth{margin-left:auto}.nav-in .qa-btn{margin-left:0}}
+@media (max-width:480px){.nav-auth-l{display:none}.nav-auth{padding:0 8px}.nav-in .kbd{display:none}.nav-in .qa-btn{padding-right:16px}}
+.sound{position:fixed;z-index:15;left:calc(env(safe-area-inset-left,0px) + 20px);bottom:calc(env(safe-area-inset-bottom,0px) + 20px);
+  display:inline-flex;align-items:center;gap:10px;height:40px;padding:0 16px 0 14px;border-radius:999px;border:1px solid var(--line-strong);
+  background:rgba(12,10,18,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);color:var(--muted);font:500 12px/1 var(--f-sans);letter-spacing:.08em;
+  opacity:0;pointer-events:none;transition:opacity .9s var(--ease),border-color .4s,color .4s}
+.sound.show{opacity:1;pointer-events:auto}
+.sound:hover{border-color:var(--gold);color:var(--fg)}
+.eq{display:inline-flex;align-items:flex-end;gap:2px;width:14px;height:12px}
+.eq i{display:block;width:2px;height:3px;border-radius:1px;background:var(--gold)}
+.sound.playing .eq i{animation:eq 1.2s ease-in-out infinite}
+.sound.playing .eq i:nth-child(2){animation-delay:-.4s}
+.sound.playing .eq i:nth-child(3){animation-delay:-.8s}
+.notice{position:fixed;z-index:18;left:calc(env(safe-area-inset-left,0px) + 20px);bottom:calc(env(safe-area-inset-bottom,0px) + 76px);width:min(400px,calc(100% - 40px));
+  padding:22px 22px 20px;border:1px solid var(--line-strong);border-radius:12px;background:linear-gradient(165deg,rgba(28,20,44,.96),rgba(10,8,15,.97));
+  box-shadow:0 40px 80px -30px #000,0 0 60px -30px rgba(214,176,106,.4),inset 0 1px 0 rgba(247,230,179,.08)}
+.notice-x{position:absolute;right:12px;top:12px;width:30px;height:30px;border-radius:50%;border:1px solid rgba(166,157,182,.24);background:none;color:var(--muted);font-size:11px}
+.notice-x:hover{border-color:var(--gold);color:var(--fg)}
+.notice-k{margin:0 0 8px;font-family:var(--f-display);font-size:10.5px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+.notice-t{margin:0 0 10px;padding-right:28px;font-family:var(--f-serif);font-weight:400;font-size:20px;line-height:1.4}
+.notice-p{margin:0;font-size:13.5px;line-height:1.8;color:var(--muted)}
+.notice-p b{color:var(--gold-hi);font-weight:500}
+.notice-a{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:18px}
+.notice-a .btn{height:44px;padding:0 20px;font-size:13px}
+.notice-later{padding:0;border:0;background:none;color:var(--dim);font:500 12.5px/1 var(--f-sans)}
+.notice-later:hover{color:var(--fg)}
+@media (max-width:520px){.notice{left:12px;right:12px;width:auto;bottom:calc(env(safe-area-inset-bottom,0px) + 72px)}}
+.auth{width:min(520px,calc(100% - 24px))}
+.auth .vault-in{max-height:min(90vh,840px)}
+.auth-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:4px 22px 22px}
+.auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;margin-bottom:18px;border:1px solid rgba(166,157,182,.2);border-radius:999px}
+.auth-tabs button{height:38px;border:0;border-radius:999px;background:none;color:var(--muted);font:500 13.5px/1 var(--f-sans);transition:background .4s,color .4s}
+.auth-tabs button[aria-selected="true"]{background:var(--gold);color:#1d1407}
+.auth-form{display:grid;gap:14px}
+.field{display:grid;gap:7px}
+.field > span{font-size:12px;letter-spacing:.06em;color:var(--muted)}
+.field input{height:48px;padding:0 16px;border:1px solid rgba(166,157,182,.24);border-radius:10px;background:rgba(255,255,255,.03);color:var(--fg);font:400 15px var(--f-sans);outline:0;transition:border-color .3s}
+.field input:focus{border-color:var(--gold)}
+.field input::placeholder{color:var(--dim)}
+.auth-err{min-height:1.4em;margin:0;font-size:13px;color:#f0a3c4}
+.auth-err.ok{color:var(--gold-hi)}
+.auth-submit{width:100%}
+.auth-submit[disabled]{opacity:.6;pointer-events:none}
+.auth-promo{margin-top:20px;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:rgba(214,176,106,.05);font-size:13px;line-height:1.75;color:var(--muted)}
+.auth-promo b{display:block;margin-bottom:2px;font-family:var(--f-display);font-size:10.5px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.auth-mode{margin:12px 0 0;font-size:11.5px;color:var(--dim);text-align:center}
+.acct{padding:6px 0 18px}
+.acct-k{margin:0;font-family:var(--f-display);font-style:italic;font-size:14px;color:var(--gold)}
+.acct-name{margin:4px 0 0;font-family:var(--f-display);font-size:34px;line-height:1.15;letter-spacing:-.01em;overflow-wrap:anywhere}
+.acct-mail{margin:4px 0 0;font-size:13px;color:var(--dim);overflow-wrap:anywhere}
+.passport{padding:18px;border:1px solid var(--line-strong);border-radius:12px;background:linear-gradient(165deg,rgba(214,176,106,.06),rgba(10,8,15,.4))}
+.pp-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.pp-head span{font-family:var(--f-display);font-size:10.5px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+.pp-head b{font-family:var(--f-display);font-weight:500;font-size:20px;font-variant-numeric:tabular-nums lining-nums}
+.pp-bar{position:relative;height:2px;margin:12px 0 16px;background:rgba(166,157,182,.2)}
+.pp-bar i{position:absolute;left:0;top:-1px;height:4px;background:var(--gold-grad)}
+.pp-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.pp-slot{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 0 6px;border:1px solid rgba(166,157,182,.14);border-radius:8px}
+.pp-gem{display:block;width:40px;height:40px;opacity:.45;filter:grayscale(.8)}
+.pp-gem svg{display:block;width:100%;height:100%}
+.pp-slot.got{border-color:var(--line-strong)}
+.pp-slot.got .pp-gem{opacity:1;filter:none}
+.pp-no{font-family:var(--f-display);font-size:10px;letter-spacing:.14em;color:var(--dim);font-variant-numeric:tabular-nums}
+.pp-note{margin:16px 0 0;font-size:12.5px;line-height:1.75;color:var(--muted)}
+.acct-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.acct-actions .btn{flex:1 1 auto;height:46px;padding:0 20px;font-size:13px}
+@media (max-width:520px){.pp-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.auth-body{padding:4px 16px 18px}}
+
 /* ---------- keyframes ---------- */
+@keyframes eq{0%,100%{height:3px}50%{height:12px}}
 @keyframes blink{50%{opacity:.25}}
 @keyframes drip{to{top:110%}}
 @keyframes draw{to{stroke-dashoffset:0}}
@@ -509,6 +586,7 @@ html.h-scroll .card-end{display:flex;flex:none;width:clamp(320px,30vw,440px)}
       <a href="#ledger"><span class="roll">Ledger</span></a>
       <a href="#contact"><span class="roll">Contact</span></a>
     </nav>
+    <button class="nav-auth" id="nav-auth" type="button" data-open-auth aria-label="로그인 또는 회원가입"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5.4" r="2.9" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M2.6 14.2c.7-2.8 2.8-4.3 5.4-4.3s4.7 1.5 5.4 4.3" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span class="nav-auth-l">로그인</span></button>
     <button class="qa-btn" type="button" data-open-vault data-magnetic><span class="roll">바로가기</span> <span class="kbd" data-kbd>⌘K</span></button>
   </div>
 </header>
@@ -582,6 +660,7 @@ html.h-scroll .card-end{display:flex;flex:none;width:clamp(320px,30vw,440px)}
                 <li><span><b>월간 AI 큐레이션</b>한 달의 추억을 AI가 요약하고 점수를 매겨요.</span></li>
                 <li><span><b>전시관 스킨</b>기본 스킨부터, 유료로 마음껏 꾸미는 나만의 관까지.</span></li>
                 <li><span><b>인생 리포트</b>매달, 매해 얼마나 잘 살았는지 다른 사람들과 비교해 요약해요.</span></li>
+                <li><span><b>인생 추구미 아카이브</b>관심사와 취향, 싫어하는 것까지 모아 나만의 관을 꾸며요.</span></li>
               </ul>
               <p class="ft-note"><svg class="lock" viewBox="0 0 12 14" aria-hidden="true"><rect x="1.5" y="6" width="9" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.1"/><path d="M3.8 6V4.2a2.2 2.2 0 0 1 4.4 0V6" fill="none" stroke="currentColor" stroke-width="1.1"/></svg>공개 예정 · 지금 공방에서 세공 중입니다</p>
               </div>
@@ -679,6 +758,29 @@ html.h-scroll .card-end{display:flex;flex:none;width:clamp(320px,30vw,440px)}
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <button class="fab" id="fab" type="button" data-open-vault data-magnetic aria-label="모든 사이트 바로가기 창 열기"><i class="dia"></i>바로가기</button>
+<button class="sound" id="sound" type="button" aria-pressed="true" aria-label="배경 음악 끄기"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="sound-l">Music</span></button>
+
+<aside class="notice" id="notice" aria-labelledby="notice-title" hidden>
+  <button class="notice-x" type="button" data-close-notice aria-label="공지 닫기">✕</button>
+  <p class="notice-k">Notice · Treasure Hunt</p>
+  <h2 class="notice-t" id="notice-title">보물을 모두 모은 괴도에게</h2>
+  <p class="notice-p">하나의 계정, 같은 이메일로 제이블랙 트레저리의 18개 사이트에 모두 가입하면 보물을 모두 모은 것으로 인정돼요. 그 순간 각 사이트에서 <b>블랙코인 500개</b>를 드립니다.</p>
+  <div class="notice-a"><button class="btn btn-gold" type="button" data-open-auth="signup">회원가입하고 보물 모으기</button><button class="notice-later" type="button" data-close-notice>나중에 볼게요</button></div>
+</aside>
+
+<dialog class="vault auth" id="auth" aria-labelledby="auth-title">
+  <div class="vault-in">
+    <div class="vault-head">
+      <svg class="hallmark" aria-hidden="true"><use href="#hallmark"/></svg>
+      <div>
+        <p class="vault-kicker">Members</p>
+        <h2 class="vault-title" id="auth-title">트레저리 계정</h2>
+      </div>
+      <button class="vault-x" type="button" data-close-auth>닫기 <span aria-hidden="true">✕</span></button>
+    </div>
+    <div class="auth-body" id="auth-body" data-lenis-prevent></div>
+  </div>
+</dialog>
 
 <dialog class="vault" id="vault" aria-labelledby="vault-title">
   <div class="vault-in">
@@ -715,7 +817,7 @@ html.h-scroll .card-end{display:flex;flex:none;width:clamp(320px,30vw,440px)}
     connect: { en: 'Connect', ko: '누군가와 닿는' },
     future:  { en: 'Future',  ko: '미래를 설계하는' },
     idol:    { en: 'Idol',    ko: '아이돌 유니버스' },
-    play:    { en: 'Play',    ko: '추리 · 생존 게임' }
+    play:    { en: 'Play',    ko: '게임' }
   };
   const ORDER = ['self', 'connect', 'future', 'idol', 'play'];
   const MAIL = 'n6248129@gmail.com';
@@ -724,43 +826,42 @@ html.h-scroll .card-end{display:flex;flex:none;width:clamp(320px,30vw,440px)}
   const LOTS = [
     { lot: '01', name: 'JBlack Tarot', kind: "Jennie's Black Tarot · 감성 AI 타로", cat: 'self', gem: 'Black Onyx', g: ['#bcaee0', '#0a0910'], status: 'open', url: 'https://www.jblacktarot.com/',
       line: '카드는 거짓말하지 않는다. 누구나 쉽게, 아름답게 보는 AI 타로로 흔들리는 마음에 평온을 남깁니다.', tags: ['타로 리딩', 'AI 해석', '10–30대 MZ'] },
-    { lot: '02', name: 'Rate Your Life', kind: '메모리 뮤지엄 · 인생 점수', cat: 'self', gem: 'Akoya Pearl', cut: 'pearl', g: ['#fffaf2', '#9d93ad'],
+    { lot: '02', name: 'Rate Your Life', kind: '메모리 뮤지엄 · 인생 추구미', cat: 'self', gem: 'Akoya Pearl', cut: 'pearl', g: ['#fffaf2', '#9d93ad'],
       stops: [[0, '#ffffff'], [.42, '#f4ecef'], [.78, '#c4b8cf'], [1, '#7a7090']],
-      line: '당신의 인생을 전시하세요. 한 달의 추억을 AI가 요약해 점수를 매기고, 매달·매해 얼마나 잘 살았는지 다른 사람들과 비교해 알려줘요.', tags: ['친구 초대', '방명록', 'AI 월간 점수', '전시관 스킨'] },
-    { lot: '03', name: 'Blueprint', kind: '나의 미래를 설계하는 앱', cat: 'future', gem: 'Sapphire', g: ['#8aa3ff', '#0c1550'],
-      line: '막연한 내일을 구체적인 청사진으로. 내가 그리는 미래를 직접 설계하고, 한 걸음씩 다가가는 앱.', tags: ['미래 설계', '목표', '라이프 플랜'] },
+      line: '당신의 인생을 전시하세요. 관심사와 취향, 싫어하는 것까지 담은 인생 추구미 아카이브에 한 달의 추억을 AI가 요약해 점수를 매기고, 매달·매해 얼마나 잘 살았는지 다른 사람들과 비교해 알려줘요.', tags: ['친구 초대', '방명록', 'AI 월간 점수', '추구미 아카이브'] },
+    { lot: '03', name: 'Career Park', kind: '디지털 키자니아 · 직업 체험', cat: 'future', gem: 'Sapphire', g: ['#8aa3ff', '#0c1550'],
+      line: '의사, 파일럿, 셰프, 아나운서까지. 키자니아처럼 다양한 직업을 디지털 도시에서 직접 체험해 보는 앱.', tags: ['직업 체험', '디지털 키자니아', '진로 탐색'] },
     { lot: '04', name: 'Dear Stranger', kind: '익명 교환일기', cat: 'connect', gem: 'Moonstone', cut: 'cab', g: ['#e9eeff', '#5d6894'],
       stops: [[0, '#ffffff'], [.45, '#e2e8ff'], [.8, '#8f9bcc'], [1, '#4b5580']],
       line: '이름도 얼굴도 모르는 누군가와 한 장씩 주고받는 교환일기. 익명이라서 더 솔직해지는 이야기.', tags: ['익명', '교환일기', '펜팔'] },
     { lot: '05', name: 'Stardom', kind: '아이돌 체험 · 연예계 시뮬레이션', cat: 'idol', gem: 'Morganite', g: ['#ffcdb8', '#8c4a3f'],
-      line: '연습생의 하루부터 무대 위의 순간까지. 아이돌로 직접 살아보는 연예계 시뮬레이션.', tags: ['아이돌 체험', '시뮬레이션', '연예계'] },
+      line: '연습생의 하루부터 무대 위의 순간까지, 아이돌로 직접 살아보는 연예계 시뮬레이션. 남돌과 몰래 짜릿한 연애를 즐기고, 온갖 병크를 터뜨려 팬들 속을 망가뜨려 보세요.', tags: ['아이돌 체험', '비밀 연애', '병크', '연예계'] },
     { lot: '06', name: 'The Verdict', kind: '되냐 안 되냐 모의재판', cat: 'connect', gem: 'Jade', g: ['#8ee6b8', '#0b4a33'],
       line: '그 유명한 “되냐 안 되냐” 짤처럼. 누구나 사건을 올려 모의재판을 열고, 모두가 배심원이 되어 판결해요.', tags: ['모의재판', '투표', '밈'] },
     { lot: '07', name: 'Inferno Island', kind: '솔로지옥 커뮤니티 게임', cat: 'connect', gem: 'Ruby', g: ['#ff5a78', '#55001a'],
       line: '솔로지옥을 온라인 커뮤니티 게임으로. 천국도와 지옥도 사이, 설렘과 선택이 오가는 연애 리얼리티를 직접 플레이해요.', tags: ['연애 리얼리티', '커뮤니티', '게임'] },
     { lot: '08', name: 'Unlocked', kind: '포렌식 추리 게임', cat: 'play', gem: 'Hematite', g: ['#c4c8d4', '#14161d'],
       line: '위태로웠던 그녀의 휴대폰과 노트북. 메시지, 사진, 지운 기록까지 포렌식으로 뒤져 숨겨진 진실을 찾아내는 추리 게임.', tags: ['추리', '디지털 포렌식', '미스터리'] },
-    { lot: '09', name: 'Life Museum', kind: '인생 추구미 아카이브', cat: 'self', gem: 'Opal', cut: 'cab', g: ['#fbf7ff', '#3f3570'],
-      stops: [[0, '#fdfaff'], [.28, '#b6f2e6'], [.52, '#f1b2ff'], [.76, '#8ea6ff'], [1, '#3f3570']],
-      line: '관심사, 취향, 싫어하는 것까지. 내가 추구하는 인생의 미감을 모아 나만의 관을 개설하는 사이트.', tags: ['추구미', '관심사', '취향 아카이브'] },
+    { lot: '09', name: 'Turn the Tables', kind: '스토커 응징 시뮬레이션', cat: 'play', gem: 'Bloodstone', g: ['#7bd09a', '#3a0d14'],
+      line: '나를 쫓던 스토커들을 역으로 추적하고, 덫을 놓고, 끝내 처단하는 서스펜스 응징 시뮬레이션.', tags: ['스릴러', '응징', '시뮬레이션'] },
     { lot: '10', name: 'Kindred', kind: '재능 · 취미 메이트 찾기', cat: 'self', gem: 'Citrine', g: ['#ffd66e', '#7e4a00'],
-      line: '숨어 있던 재능, 혹은 진짜 나를 찾고 같은 관심사와 취미를 가진 사람들을 만나는 앱.', tags: ['재능 찾기', '관심사 매칭', '취미'] },
-    { lot: '11', name: 'Patron', kind: '스폰서 매칭', cat: 'future', gem: 'Emerald', g: ['#45e6a0', '#003d28'],
-      line: '사업이든 꿈이든, 나를 믿고 후원해 줄 스폰서를 찾는 곳.', tags: ['후원', '스폰서', '사업'] },
+      line: '숨어 있던 재능, 혹은 진짜 나를 찾고 입시와 재능이 비슷한 친구들을 만나요. 함께 패션 프로젝트를 공유하고, 학교별로 뭉쳐 학생들이 직접 주최하는 교환학생 프로그램까지 서포트해요.', tags: ['재능 찾기', '패션 프로젝트', '학교별 연합', '교환학생'] },
+    { lot: '11', name: 'Patron', kind: '스폰서 · 사업 파트너 매칭', cat: 'future', gem: 'Emerald', g: ['#45e6a0', '#003d28'],
+      line: '사업이든 꿈이든, 나를 믿고 후원해 줄 스폰서를 찾는 곳. 스폰서뿐만 아니라 사업 파트너, 함께 창업할 앙트러프러너십 파트너도 구해 보세요.', tags: ['후원', '스폰서', '사업 파트너', '창업'] },
     { lot: '12', name: 'The Community', kind: '더 커뮤니티 1 · 2 디지털 게임', cat: 'play', gem: 'Garnet', g: ['#d8405f', '#330611'],
       line: '사상검증부터 보이지 않는 손의 거래까지. “더 커뮤니티” 시즌 1·2의 사회 실험을 디지털 게임으로 직접 플레이해요.', tags: ['사회 실험', '서바이벌', '시즌 1·2'] },
     { lot: '13', name: 'Admit', kind: '디지털 입시 컨설팅', cat: 'future', gem: 'Aquamarine', g: ['#9cf0f4', '#0d4e60'],
       line: '입시 컨설팅을 디지털로. 언제 어디서든 나의 합격 전략을 점검하고 다듬어요.', tags: ['입시', '컨설팅', '합격 전략'] },
-    { lot: '14', name: 'Idol Transit', kind: '아이돌 환승연애', cat: 'idol', gem: 'Alexandrite', g: ['#63d9ad', '#4a1a66'],
-      line: '아이돌 세계관에서 펼쳐지는 환승연애. 지나간 인연과 새로운 설렘 사이, 마지막 선택은 당신의 몫.', tags: ['아이돌', '환승연애', '연애 시뮬레이션'] },
-    { lot: '15', name: 'Final Debut', kind: '아이돌 서바이벌', cat: 'idol', gem: 'Diamond', g: ['#ffffff', '#59607a'],
-      line: '단 한 번의 데뷔를 향한 서바이벌. 무대와 투표로 최종 데뷔조를 가려요.', tags: ['서바이벌', '오디션', '투표'] },
+    { lot: '14', name: 'Star Transit', kind: '연예인 환승연애', cat: 'idol', gem: 'Alexandrite', g: ['#63d9ad', '#4a1a66'],
+      line: '연예계 세계관에서 펼쳐지는 환승연애. 지나간 인연과 새로운 설렘 사이, 마지막 선택은 당신의 몫.', tags: ['연예인', '환승연애', '연애 시뮬레이션'] },
+    { lot: '15', name: 'Final Debut', kind: '아이돌 서바이벌 · 남돌·여돌 커스텀', cat: 'idol', gem: 'Diamond', g: ['#ffffff', '#59607a'],
+      line: '단 한 번의 데뷔를 향한 서바이벌. 비주얼과 스타일, 콘셉트까지 남돌·여돌을 직접 커스텀해 나만의 그룹을 만들고, 무대와 투표로 최종 데뷔조를 가려요.', tags: ['서바이벌', '남돌 커스텀', '여돌 커스텀', '투표'] },
     { lot: '16', name: 'BANG! Digital', kind: '뱅! 디지털 버전', cat: 'play', gem: 'Imperial Topaz', g: ['#ffad5c', '#6a2600'],
       line: '보안관, 부관, 무법자, 배신자. 정체를 숨긴 채 서로를 겨누는 카드게임 뱅!을 온라인으로.', tags: ['카드게임', '정체 숨기기', '멀티플레이'] },
-    { lot: '17', name: 'Atelier: Boys', kind: '남돌 커스텀 게임', cat: 'idol', gem: 'Tanzanite', g: ['#9c88ff', '#1f1259'],
-      line: '비주얼, 스타일, 콘셉트까지 내 손으로. 직접 커스텀해 만드는 나만의 보이그룹.', tags: ['남자 아이돌', '커스텀', '나만의 그룹'] },
-    { lot: '18', name: 'Atelier: Girls', kind: '여돌 커스텀 게임', cat: 'idol', gem: 'Kunzite', g: ['#ffbde9', '#743066'],
-      line: '비주얼부터 콘셉트까지 내 손으로. 직접 커스텀해 만드는 나만의 걸그룹.', tags: ['여자 아이돌', '커스텀', '나만의 그룹'] }
+    { lot: '17', name: 'After Midnight', kind: '한국 클럽 게임', cat: 'play', gem: 'Tanzanite', g: ['#9c88ff', '#1f1259'],
+      line: '줄 서기와 입장 심사부터 테이블, 플로어까지. 한국 클럽의 밤을 그대로 옮긴 게임에서 오늘 밤의 주인공이 되어 보세요.', tags: ['클럽', '나이트라이프', '멀티플레이'] },
+    { lot: '18', name: 'Muse Salon', kind: '메이크업 게임', cat: 'play', gem: 'Kunzite', g: ['#ffbde9', '#743066'],
+      line: '손님마다 다른 요구사항을 듣고, 피부 톤부터 아이라인 끝까지 세심하게 맞춰 완성하는 메이크업 게임.', tags: ['메이크업', '손님 맞춤', '뷰티'] }
   ];
   // 3D 렌더링용 보석 재질: 투명 브릴리언트 컷(tint·굴절률), 광택 불투명(mode 1), 진주(2), 문스톤(3), 오팔(4)
   const SPEC = {
@@ -772,7 +873,7 @@ html.h-scroll .card-end{display:flex;flex:none;width:clamp(320px,30vw,440px)}
     '06': { tint: [.4, 1, .6], ior: 1.9 },
     '07': { tint: [1, .16, .28], ior: 2.05 },
     '08': { mode: 1, base: [.6, .62, .68], metal: 1 },
-    '09': { mode: 4, mesh: 'oval', base: [.9, .9, .95] },
+    '09': { tint: [.25, .62, .38], tint2: [.92, .14, .2], ior: 1.95 },
     '10': { tint: [1, .76, .26], ior: 1.95 },
     '11': { tint: [.2, 1, .5], ior: 1.9 },
     '12': { tint: [.78, .09, .18], ior: 2.0 },
@@ -941,7 +1042,10 @@ void main(){
       const PROJ = [fy, 0, 0, 0, 0, fy, 0, 0, 0, 0, (fr + nr) / (nr - fr), -1, 0, 0, 2 * fr * nr / (nr - fr), 0];
       const pow = c => c.map(x => Math.pow(x, .55));
       Object.values(SPEC).forEach(s => { if (s.tint) s.tintP = pow(s.tint); if (s.tint2) s.tint2P = pow(s.tint2); });
+      let lost = false;
+      cv.addEventListener('webglcontextlost', e => { e.preventDefault(); lost = true; });
       return {
+        get lost() { return lost || gl.isContextLost(); },
         draw(spec, px, spin, tilt, t) {
           if (px > cv.width) cv.width = cv.height = Math.min(1024, Math.ceil(px / 64) * 64);
           gl.viewport(0, 0, px, px); gl.scissor(0, 0, px, px);
@@ -992,7 +1096,8 @@ void main(){
     return `<svg viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${lt}" stop-opacity=".95"/><stop offset="1" stop-color="${lt}" stop-opacity=".22"/></linearGradient></defs>`
       + `<polygon points="${outer}" fill="${dk}"/><g stroke="#fff" stroke-opacity=".16" stroke-width=".35">${facets}</g><polygon points="${table}" fill="url(#${id})"/></svg>`;
   }
-  const gemHTML = (L, o = {}) => GemGL
+  let gemOK = !!GemGL;
+  const gemHTML = (L, o = {}) => gemOK
     ? `<canvas class="gemc" data-lot="${L.lot}" data-tilt="${o.tilt ?? .5}" data-speed="${o.speed ?? .4}" data-max="${o.max ?? 260}"${o.scroll ? ' data-scroll="1"' : ''}></canvas>`
     : svgGem(L);
   const glow = L => isOpen(L) ? 'rgba(214,176,106,.6)' : rgba(L.g[0], .5);
@@ -1001,7 +1106,7 @@ void main(){
   const slots = new Set();
   const gemIO = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => { if (e.target._slot) e.target._slot.visible = e.isIntersecting; }), { rootMargin: '120px' }) : null;
   function scanSlots(scope = document) {
-    if (!GemGL) return;
+    if (!gemOK) return;
     $$('canvas.gemc', scope).forEach(c => {
       if (c._slot) return;
       const s = { c, ctx: c.getContext('2d'), spec: SPEC[c.dataset.lot], tilt: +c.dataset.tilt, speed: +c.dataset.speed, max: +c.dataset.max, scroll: !!c.dataset.scroll,
@@ -1010,10 +1115,17 @@ void main(){
       if (gemIO) gemIO.observe(c);
     });
   }
-  let quality = 1, gemCost = 4;
+  let quality = 1, gemCost = 8;
+  // if the GPU ever drops the gem renderer, every gem quietly becomes its drawn version instead of breaking
+  function gemsToSvg() {
+    gemOK = false;
+    $$('canvas.gemc').forEach(c => { const L = byLot[c.dataset.lot]; if (!L) return; const w = document.createElement('span'); w.innerHTML = svgGem(L); c.replaceWith(w.firstElementChild); });
+    slots.clear();
+  }
   function renderGems(dt, t) {
-    if (!GemGL) return;
-    const t0 = performance.now(), dpr = Math.min(2, devicePixelRatio || 1);
+    if (!gemOK) return;
+    if (GemGL.lost) { gemsToSvg(); return; }
+    const t0 = performance.now(), dpr = Math.min(3, devicePixelRatio || 1);
     slots.forEach(s => {
       if (!s.c.isConnected) { if (gemIO) gemIO.unobserve(s.c); slots.delete(s); return; }
       if (!s.visible) return;
@@ -1026,13 +1138,16 @@ void main(){
       if (!reduce) s.ang += dt * s.speed * (1 + s.hover * 2.4);
       let spin = s.ang;
       if (s.scroll) spin += s.c.getBoundingClientRect().left / innerWidth * 1.4;
-      const src = GemGL.draw(s.spec, px, spin, s.tilt, t);
-      s.ctx.clearRect(0, 0, px, px);
-      s.ctx.drawImage(src, 0, src.height - px, px, px, 0, 0, px, px);
-      s.drawn = px;
+      try {
+        const src = GemGL.draw(s.spec, px, spin, s.tilt, t);
+        s.ctx.clearRect(0, 0, px, px);
+        s.ctx.drawImage(src, 0, src.height - px, px, px, 0, 0, px, px);
+        s.drawn = px;
+      } catch (err) { s.visible = false; }
     });
     gemCost = gemCost * .9 + (performance.now() - t0) * .1;
-    if (gemCost > 11) quality = Math.max(.5, quality - .02); else if (gemCost < 5) quality = Math.min(1, quality + .004);
+    // gems always render at full resolution; only a severe, sustained stall eases it a little so the page never locks up
+    if (gemCost > 45) quality = Math.max(.8, quality - .01); else if (gemCost < 24) quality = Math.min(1, quality + .01);
   }
   const setHover = (el, on) => { const c = el.querySelector('canvas.gemc'); if (c && c._slot) c._slot.hoverT = on ? 1 : 0; };
 
@@ -1208,7 +1323,7 @@ void main(){
     const L = byLot[v.lot];
     return `<div class="vit${v.desk ? ' desk' : ''}" style="--g1:${rgba(L.g[0], .5)};--g2:${rgba(v.c2, .2)};--dl:${(-i * 1.6).toFixed(1)}s;z-index:${Math.round(100 - v.z)}">
       <div class="vit-refl"></div><div class="vit-halo"></div><div class="vit-ped"></div>
-      <div class="vit-gem">${gemHTML(L, { tilt: .2, speed: .32, max: 380 })}
+      <div class="vit-gem">${gemHTML(L, { tilt: .2, speed: .32, max: 600 })}
         <i class="vit-glint" style="left:14%;top:12%;animation-delay:${(i * .9).toFixed(1)}s"></i>
         <i class="vit-glint" style="left:60%;top:40%;width:16%;height:16%;animation-delay:${(i * .9 + 2.4).toFixed(1)}s"></i></div>
       <div class="vit-case"></div>
@@ -1221,7 +1336,7 @@ void main(){
     const W = hero.clientWidth, H = hero.clientHeight;
     if (!W || !H) return;
     heroW = W; heroH = H;
-    const dpr = Math.min(1.5, devicePixelRatio || 1);
+    const dpr = Math.min(2, devicePixelRatio || 1);
     [hallC, litC].forEach((c, i) => {
       c.width = Math.round(W * dpr); c.height = Math.round(H * dpr);
       const ctx = c.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -1249,7 +1364,7 @@ void main(){
     const open = isOpen(L);
     return `<article class="card${open ? ' is-open' : ''}" id="lot-${L.lot}" data-cat="${L.cat}" style="--glow:${glow(L)}">
       <div class="card-top"><span class="card-no">${L.lot}</span>${open ? '<span class="pill open"><i></i>Open</span>' : '<span class="pill sealed">Sealed</span>'}</div>
-      <div class="card-gem"><span class="gem">${gemHTML(L, { tilt: .48, speed: .3, max: 280, scroll: true })}</span></div>
+      <div class="card-gem"><span class="gem">${gemHTML(L, { tilt: .48, speed: .3, max: 400, scroll: true })}</span></div>
       <p class="card-lot">${L.gem} · ${CATS[L.cat].en}</p>
       <h3 class="card-name">${L.name}</h3>
       <p class="card-kind">${L.kind}</p>
@@ -1405,7 +1520,7 @@ void main(){
   const hay = LOTS.map(L => norm([L.lot, L.name, L.kind, L.line, L.gem, L.tags.join(' '), CATS[L.cat].en, CATS[L.cat].ko].join(' ')));
   function row(L) {
     const open = isOpen(L);
-    const inner = `<span class="row-gem">${gemHTML(L, { tilt: .5, speed: .45, max: 110 })}</span><span class="row-main"><span class="row-top"><span class="row-lot">Lot ${L.lot}</span><span class="row-name">${L.name}</span></span><span class="row-kind">${L.kind}</span></span>`
+    const inner = `<span class="row-gem">${gemHTML(L, { tilt: .5, speed: .45, max: 160 })}</span><span class="row-main"><span class="row-top"><span class="row-lot">Lot ${L.lot}</span><span class="row-name">${L.name}</span></span><span class="row-kind">${L.kind}</span></span>`
       + `<span class="row-act">${open ? '바로가기 <span aria-hidden="true">↗</span>' : '공개 예정<span class="more"> · 소개 보기</span>'}</span>`;
     return open
       ? `<a class="row open" href="${L.url}" target="_blank" rel="noopener">${inner}</a>`
@@ -1539,7 +1654,7 @@ void main(){
     gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
     const uR = gl.getUniformLocation(prog, 'R'), uT = gl.getUniformLocation(prog, 'T'), uM = gl.getUniformLocation(prog, 'M'), uS = gl.getUniformLocation(prog, 'S');
     const resize = () => {
-      const k = Math.min(devicePixelRatio || 1, 1.5) * .5;
+      const k = Math.min(devicePixelRatio || 1, 2) * .75;
       const w = Math.max(1, Math.round(innerWidth * k)), h = Math.max(1, Math.round(innerHeight * k));
       if (c.width !== w || c.height !== h) { c.width = w; c.height = h; gl.viewport(0, 0, w, h); }
     };
@@ -1581,10 +1696,13 @@ void main(){
     pointer = { x: e.clientX, y: e.clientY };
     if (e.pointerType === 'mouse') { light.follow = true; light.idleAt = performance.now(); }
   }, { passive: true });
-  let lastNow = performance.now();
+  let lastNow = performance.now(), loopWarned = false;
   (function loop(now) {
     requestAnimationFrame(loop);
-    if (document.hidden) return;
+    if (document.hidden) { lastNow = now; return; }
+    try { frame(now); } catch (err) { if (!loopWarned) { loopWarned = true; console.warn(err); } }
+  })(performance.now());
+  function frame(now) {
     const dt = Math.min(.05, (now - lastNow) / 1000), t = now / 1000;
     lastNow = now;
     const hr = hero.getBoundingClientRect();
@@ -1614,11 +1732,336 @@ void main(){
       }
     } else if (light.follow) lightLux(pointer.x, pointer.y);
     renderGems(dt, t);
-  })(performance.now());
+  }
+
+  /* ---------- sound: heel clicks in the intro, a quiet classical theme once the crest appears ---------- */
+  const Sound = (() => {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    const BEAT = 60 / 56, LOOP = 48, VOL = .22;
+    const btn = $('#sound');
+    let ctx = null, master = null, dry = null, wet = null, timer = 0, loopStart = 0, idx = 0, started = false, wanted = true;
+    try { wanted = localStorage.getItem('jbt-music') !== 'off'; } catch (e) {}
+    const ui = () => {
+      const on = wanted && started && ctx && ctx.state === 'running';
+      btn.classList.toggle('playing', !!on);
+      btn.setAttribute('aria-pressed', String(wanted));
+      btn.setAttribute('aria-label', wanted ? '배경 음악 끄기' : '배경 음악 켜기');
+      btn.querySelector('.sound-l').textContent = wanted ? 'Music' : 'Muted';
+    };
+    const ensure = () => {
+      if (ctx || !AC) return ctx;
+      try {
+        ctx = new AC();
+        master = ctx.createGain(); master.gain.value = 0;
+        const comp = ctx.createDynamicsCompressor(); comp.threshold.value = -18; comp.ratio.value = 3;
+        master.connect(comp); comp.connect(ctx.destination);
+        dry = ctx.createGain(); dry.gain.value = .55; dry.connect(master);
+        // a long, soft hall made from decaying noise
+        const rev = ctx.createConvolver(), len = Math.round(ctx.sampleRate * 4.2), ir = ctx.createBuffer(2, len, ctx.sampleRate);
+        for (let c = 0; c < 2; c++) { const d = ir.getChannelData(c); for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3.2); }
+        rev.buffer = ir;
+        wet = ctx.createGain(); const rg = ctx.createGain(); rg.gain.value = .5;
+        wet.connect(rev); rev.connect(rg); rg.connect(master);
+        ctx.onstatechange = ui;
+      } catch (e) { ctx = null; }
+      return ctx;
+    };
+    const hz = m => 440 * Math.pow(2, (m - 69) / 12);
+    const piano = (t, m, d, v) => {
+      const f = hz(m), len = Math.max(d * BEAT + .8, 1.8 + 3 * Math.max(0, (84 - m) / 54));
+      const out = ctx.createGain(), lp = ctx.createBiquadFilter();
+      lp.type = 'lowpass'; lp.Q.value = .4;
+      lp.frequency.setValueAtTime(Math.min(10000, f * 9), t);
+      lp.frequency.exponentialRampToValueAtTime(Math.max(500, f * 2.2), t + 1.4);
+      out.gain.setValueAtTime(.0001, t);
+      out.gain.exponentialRampToValueAtTime(v, t + .01);
+      out.gain.exponentialRampToValueAtTime(.0001, t + len);
+      [[1, 1], [2.004, .34], [3.009, .14], [4.016, .06]].forEach(([h, a]) => {
+        const o = ctx.createOscillator(), g = ctx.createGain();
+        o.type = 'sine'; o.frequency.value = f * h; g.gain.value = a;
+        o.connect(g); g.connect(lp); o.start(t); o.stop(t + len + .1);
+      });
+      lp.connect(out); out.connect(dry); out.connect(wet);
+    };
+    const pad = (t, m, d, v) => {
+      const f = hz(m), len = d * BEAT, out = ctx.createGain(), lp = ctx.createBiquadFilter(), dg = ctx.createGain();
+      lp.type = 'lowpass'; lp.frequency.value = 900; lp.Q.value = .3;
+      out.gain.setValueAtTime(.0001, t);
+      out.gain.exponentialRampToValueAtTime(v, t + Math.min(2.2, len * .4));
+      out.gain.setValueAtTime(v, t + len * .75);
+      out.gain.exponentialRampToValueAtTime(.0001, t + len + 2.4);
+      [-7, 7].forEach(c => { const o = ctx.createOscillator(); o.type = 'sawtooth'; o.frequency.value = f; o.detune.value = c; o.connect(lp); o.start(t); o.stop(t + len + 2.6); });
+      lp.connect(out); out.connect(wet); dg.gain.value = .35; out.connect(dg); dg.connect(dry);
+    };
+    const bell = (t, m, v) => {
+      const f = hz(m), out = ctx.createGain(), dg = ctx.createGain();
+      out.gain.setValueAtTime(.0001, t); out.gain.exponentialRampToValueAtTime(v, t + .005); out.gain.exponentialRampToValueAtTime(.0001, t + 2.6);
+      [[1, 1], [2.76, .4], [5.4, .15]].forEach(([h, a]) => { const o = ctx.createOscillator(), g = ctx.createGain(); o.type = 'sine'; o.frequency.value = f * h; g.gain.value = a; o.connect(g); g.connect(out); o.start(t); o.stop(t + 2.7); });
+      out.connect(wet); dg.gain.value = .3; out.connect(dg); dg.connect(dry);
+    };
+    // an original score: a slow D-minor waltz, 16 bars of 3/4 that loop. Dm9, Bbmaj7, Gm9, Asus4, A7b9 under a floating D-F-A pad
+    const EVENTS = (() => {
+      const ev = [], chords = [[38, [53, 57, 64]], [34, [53, 57, 62]], [31, [50, 53, 57]], [33, [50, 55, 64]], [33, [49, 55, 58]]];
+      const bars = [0, 0, 1, 1, 2, 2, 3, 4];
+      for (let ph = 0; ph < 2; ph++) bars.forEach((ci, i) => {
+        const b0 = ph * 24 + i * 3, [bass, tri] = chords[ci];
+        ev.push({ b: b0, k: 'p', m: bass, d: 3, v: .42 });
+        [1, 2].forEach(x => tri.forEach((n, j) => ev.push({ b: b0 + x + j * .035, k: 'p', m: n, d: 1, v: x === 1 ? .2 : .16 })));
+        if (i < 6 && i % 2 === 0) [62, 65, 69].forEach(n => ev.push({ b: b0, k: 'pad', m: n, d: 6, v: .035 }));
+        if (i === 6) [62, 64, 67].forEach(n => ev.push({ b: b0, k: 'pad', m: n, d: 3, v: .035 }));
+        if (i === 7) [61, 64, 67].forEach(n => ev.push({ b: b0, k: 'pad', m: n, d: 3, v: .035 }));
+      });
+      [[1, 81, 2], [3, 79, 1], [4, 77, 1], [5, 76, 1], [6, 77, 3], [9, 74, 2], [11, 72, 1], [12, 74, 1], [13, 70, 2], [15, 69, 1], [16, 70, 1], [17, 74, 1], [18, 76, 3], [21, 73, 3],
+        [25, 86, 2], [27, 84, 1], [28, 81, 1], [29, 77, 1], [30, 81, 3], [33, 79, 2], [35, 77, 1], [36, 76, 1], [37, 77, 2], [39, 79, 1], [40, 81, 1], [41, 82, 1], [42, 81, 3], [45, 74, 3]]
+        .forEach(([b, m, d]) => ev.push({ b, k: 'p', m, d, v: .3 }));
+      [7.5, 19.5, 31.5, 43.5].forEach((b, i) => ev.push({ b, k: 'bell', m: i % 2 ? 88 : 93, v: .05 }));
+      return ev.sort((a, b) => a.b - b.b);
+    })();
+    const tick = () => {
+      if (!ctx || ctx.state !== 'running' || !started) return;
+      const ahead = ctx.currentTime + 1.2;
+      for (let guard = 0; guard < 600; guard++) {
+        const e = EVENTS[idx], t = loopStart + e.b * BEAT;
+        if (t > ahead) break;
+        if (t >= ctx.currentTime - .02) { try { if (e.k === 'p') piano(t, e.m, e.d, e.v); else if (e.k === 'pad') pad(t, e.m, e.d, e.v); else bell(t, e.m, e.v); } catch (err) {} }
+        if (++idx >= EVENTS.length) { idx = 0; loopStart += LOOP * BEAT; }
+      }
+    };
+    const start = () => {
+      if (!wanted || !ensure()) { ui(); return; }
+      if (ctx.state !== 'running') ctx.resume().catch(() => {});
+      if (!started) { started = true; loopStart = ctx.currentTime + .25; idx = 0; }
+      if (!timer) timer = setInterval(tick, 90);
+      master.gain.cancelScheduledValues(ctx.currentTime);
+      master.gain.setTargetAtTime(VOL, ctx.currentTime, 1.4);
+      ui();
+    };
+    const stop = () => {
+      if (!ctx) return;
+      master.gain.cancelScheduledValues(ctx.currentTime);
+      master.gain.setTargetAtTime(0, ctx.currentTime, .35);
+      setTimeout(() => { if (!wanted) { clearInterval(timer); timer = 0; started = false; } ui(); }, 1600);
+    };
+    // browsers hold sound until the visitor first touches the page; the theme picks up right then
+    ['pointerdown', 'keydown', 'touchend'].forEach(ev => addEventListener(ev, () => {
+      if (ctx && ctx.state !== 'running') ctx.resume().then(ui).catch(() => {});
+    }, { passive: true, capture: true }));
+    btn.addEventListener('click', () => {
+      wanted = !wanted;
+      try { localStorage.setItem('jbt-music', wanted ? 'on' : 'off'); } catch (e) {}
+      if (wanted) start(); else stop();
+      ui();
+    });
+    const heel = () => {
+      if (!ctx || ctx.state !== 'running') return;
+      try {
+        const sr = ctx.sampleRate, buf = ctx.createBuffer(1, Math.round(sr * .12), sr), d = buf.getChannelData(0);
+        for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * Math.exp(-i / (sr * .01));
+        const src = ctx.createBufferSource(), bp = ctx.createBiquadFilter(), g = ctx.createGain(), dl = ctx.createDelay(), eg = ctx.createGain();
+        src.buffer = buf; bp.type = 'bandpass'; bp.frequency.value = 2300; bp.Q.value = 2.5; g.gain.value = .3; dl.delayTime.value = .16; eg.gain.value = .12;
+        src.connect(bp); bp.connect(g); g.connect(ctx.destination); g.connect(dl); dl.connect(eg); eg.connect(ctx.destination);
+        src.start();
+      } catch (e) {}
+    };
+    ui();
+    return { ensure, start, heel };
+  })();
+
+  /* ---------- members: one account for every site in the house ---------- */
+  // 실제 회원 시스템으로 쓰려면 Supabase 프로젝트의 URL과 anon(공개) 키를 넣으세요. 18개 사이트가 같은 Supabase 프로젝트를 쓰면
+  // 하나의 계정으로 모든 사이트에 로그인되고, user_metadata.treasures 에 가입한 사이트의 lot 번호를 쌓아 보물 개수를 셉니다.
+  // 비워 두면 데모 모드로 동작하며, 계정은 방문자 브라우저에만 저장됩니다.
+  const AUTH_CONFIG = { supabaseUrl: '', supabaseAnonKey: '' };
+  const store = {
+    get(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { return false; } },
+    del(k) { try { localStorage.removeItem(k); } catch (e) {} }
+  };
+  const Auth = (() => {
+    const demo = !(AUTH_CONFIG.supabaseUrl && AUTH_CONFIG.supabaseAnonKey);
+    const subs = new Set();
+    let sb = null, user = null, memUsers = {};
+    const emit = () => subs.forEach(f => { try { f(user); } catch (e) {} });
+    const fromSb = u => u ? { email: u.email, nickname: (u.user_metadata && u.user_metadata.nickname) || (u.email || '').split('@')[0], treasures: (u.user_metadata && u.user_metadata.treasures) || [] } : null;
+    const users = () => store.get('jbt-users', null) || memUsers;
+    const saveUsers = u => { if (!store.set('jbt-users', u)) memUsers = u; };
+    const hash = async (email, pw) => {
+      const data = new TextEncoder().encode('jbt::' + email + '::' + pw);
+      try { if (window.crypto && crypto.subtle) { const b = await crypto.subtle.digest('SHA-256', data); return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, '0')).join(''); } } catch (e) {}
+      let h = 2166136261; for (const c of data) { h ^= c; h = Math.imul(h, 16777619); } return 'f' + (h >>> 0).toString(16);
+    };
+    const loadSb = () => new Promise((res, rej) => {
+      if (window.supabase) return res();
+      const s = document.createElement('script');
+      s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js';
+      s.onload = res; s.onerror = rej; document.head.appendChild(s);
+    });
+    async function init() {
+      if (demo) {
+        const em = store.get('jbt-session', null), u = em && users()[em];
+        if (u) user = { email: em, nickname: u.nickname, treasures: u.treasures || [] };
+        emit(); return;
+      }
+      try {
+        await loadSb();
+        sb = window.supabase.createClient(AUTH_CONFIG.supabaseUrl, AUTH_CONFIG.supabaseAnonKey);
+        const { data } = await sb.auth.getSession();
+        user = fromSb(data && data.session && data.session.user);
+        sb.auth.onAuthStateChange((_e, s) => { user = fromSb(s && s.user); emit(); });
+      } catch (e) { user = null; }
+      emit();
+    }
+    async function signUp(email, pw, nickname) {
+      if (demo) {
+        const all = users();
+        if (all[email]) throw new Error('exists');
+        all[email] = { nickname, hash: await hash(email, pw), treasures: [], created: Date.now() };
+        saveUsers(all); store.set('jbt-session', email);
+        user = { email, nickname, treasures: [] }; emit();
+        return { confirm: false };
+      }
+      if (!sb) throw new Error('network');
+      const { data, error } = await sb.auth.signUp({ email, password: pw, options: { data: { nickname, treasures: [] } } });
+      if (error) throw error;
+      return { confirm: !(data && data.session) };
+    }
+    async function signIn(email, pw) {
+      if (demo) {
+        const u = users()[email];
+        if (!u || u.hash !== await hash(email, pw)) throw new Error('invalid');
+        store.set('jbt-session', email);
+        user = { email, nickname: u.nickname, treasures: u.treasures || [] }; emit();
+        return;
+      }
+      if (!sb) throw new Error('network');
+      const { data, error } = await sb.auth.signInWithPassword({ email, password: pw });
+      if (error) throw error;
+      user = fromSb(data && data.user); emit();
+    }
+    async function signOut() {
+      if (demo) { store.del('jbt-session'); user = null; emit(); return; }
+      if (sb) await sb.auth.signOut();
+      user = null; emit();
+    }
+    return { init, signUp, signIn, signOut, demo, on: f => subs.add(f), get user() { return user; } };
+  })();
+  const authMsg = e => {
+    const m = String((e && (e.message || e.error_description)) || '');
+    if (m === 'exists' || /already registered|already exists/i.test(m)) return '이미 가입된 이메일이에요. 로그인해 주세요.';
+    if (m === 'invalid' || /invalid login|invalid credentials/i.test(m)) return '이메일 또는 비밀번호가 맞지 않아요.';
+    if (/not confirmed/i.test(m)) return '가입 확인 메일의 링크를 먼저 눌러 주세요.';
+    if (/rate limit|too many/i.test(m)) return '요청이 많아요. 잠시 후 다시 시도해 주세요.';
+    if (m === 'network' || /network|fetch/i.test(m)) return '연결이 불안정해요. 네트워크를 확인하고 다시 시도해 주세요.';
+    return '처리하지 못했어요. 잠시 후 다시 시도해 주세요.';
+  };
+  const authDlg = $('#auth'), authBody = $('#auth-body'), navAuth = $('#nav-auth');
+  let authView = 'login';
+  const accountHTML = u => {
+    const got = new Set(u.treasures || []), n = LOTS.filter(L => got.has(L.lot)).length;
+    return `<div class="acct"><p class="acct-k">Welcome back</p><p class="acct-name">${esc(u.nickname)}</p><p class="acct-mail">${esc(u.email)}</p></div>
+      <div class="passport">
+        <div class="pp-head"><span>Treasure Passport</span><b>${pad(n)} / ${LOTS.length}</b></div>
+        <div class="pp-bar"><i style="width:${(n / LOTS.length * 100).toFixed(1)}%"></i></div>
+        <div class="pp-grid">${LOTS.map(L => `<div class="pp-slot${got.has(L.lot) ? ' got' : ''}" title="${esc(L.name)}"><span class="pp-gem">${gemHTML(L, { tilt: .5, speed: .35, max: 160 })}</span><span class="pp-no">${L.lot}</span></div>`).join('')}</div>
+        <p class="pp-note">같은 이메일로 18개 사이트에 모두 가입하면 보물을 모두 모은 괴도로 인정돼요. 그 순간 각 사이트에서 블랙코인 500개를 드려요.</p>
+      </div>
+      <div class="acct-actions">
+        <a class="btn btn-gold" href="https://www.jblacktarot.com/" target="_blank" rel="noopener">JBlack Tarot에서 첫 보물 모으기 ↗</a>
+        <button class="btn btn-ghost" type="button" data-logout>로그아웃</button>
+      </div>`;
+  };
+  function renderAuth() {
+    const u = Auth.user;
+    if (u) { authBody.innerHTML = accountHTML(u); scanSlots(authBody); return; }
+    const su = authView === 'signup';
+    authBody.innerHTML = `<div class="auth-tabs" role="tablist">
+        <button type="button" role="tab" data-view="login" aria-selected="${!su}">로그인</button>
+        <button type="button" role="tab" data-view="signup" aria-selected="${su}">회원가입</button>
+      </div>
+      <form class="auth-form" id="auth-form" novalidate>
+        ${su ? '<label class="field"><span>닉네임</span><input id="au-nick" name="nickname" type="text" autocomplete="nickname" maxlength="16" placeholder="2–16자"></label>' : ''}
+        <label class="field"><span>이메일</span><input id="au-email" name="email" type="email" autocomplete="email" placeholder="you@example.com"></label>
+        <label class="field"><span>비밀번호</span><input id="au-pw" name="password" type="password" autocomplete="${su ? 'new-password' : 'current-password'}" placeholder="8자 이상"></label>
+        ${su ? '<label class="field"><span>비밀번호 확인</span><input id="au-pw2" name="password2" type="password" autocomplete="new-password"></label>' : ''}
+        <p class="auth-err" id="auth-err" role="alert"></p>
+        <button class="btn btn-gold auth-submit" type="submit">${su ? '가입하고 보물 모으기' : '로그인'}</button>
+      </form>
+      <div class="auth-promo"><b>Treasure Hunt</b>같은 이메일로 18개 사이트에 모두 가입하면, 각 사이트에서 블랙코인 500개를 드려요.</div>
+      ${Auth.demo ? '<p class="auth-mode">데모 모드 · 계정 정보가 이 브라우저에만 저장돼요</p>' : ''}`;
+  }
+  function openAuth(view) {
+    authView = view === 'signup' ? 'signup' : 'login';
+    renderAuth();
+    if (!authDlg.open) authDlg.showModal();
+    if (lenis) lenis.stop();
+    if (finePointer) { const f = authBody.querySelector('input'); if (f) f.focus(); }
+  }
+  authDlg.addEventListener('close', () => { if (lenis && !vault.open) lenis.start(); });
+  $('[data-close-auth]').addEventListener('click', () => authDlg.close());
+  authDlg.addEventListener('click', e => { if (e.target === authDlg) authDlg.close(); });
+  authBody.addEventListener('click', async e => {
+    const v = e.target.closest('[data-view]');
+    if (v) { authView = v.dataset.view; renderAuth(); const f = authBody.querySelector('input'); if (f && finePointer) f.focus(); return; }
+    if (e.target.closest('[data-logout]')) {
+      try { await Auth.signOut(); toast('로그아웃했어요'); } catch (err) { toast(authMsg(err)); }
+      authView = 'login'; renderAuth();
+    }
+  });
+  authBody.addEventListener('submit', async e => {
+    e.preventDefault();
+    const form = e.target, errEl = form.querySelector('#auth-err'), sub = form.querySelector('.auth-submit');
+    const say = (msg, ok) => { errEl.textContent = msg; errEl.classList.toggle('ok', !!ok); };
+    const su = authView === 'signup';
+    const email = form.email.value.trim().toLowerCase(), pw = form.password.value, nick = su ? form.nickname.value.trim() : '';
+    if (su && (nick.length < 2 || nick.length > 16)) { say('닉네임은 2–16자로 입력해 주세요.'); form.nickname.focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { say('올바른 이메일 주소를 입력해 주세요.'); form.email.focus(); return; }
+    if (pw.length < 8) { say('비밀번호는 8자 이상이어야 해요.'); form.password.focus(); return; }
+    if (su && pw !== form.password2.value) { say('비밀번호 확인이 일치하지 않아요.'); form.password2.focus(); return; }
+    const label = sub.textContent;
+    sub.disabled = true; sub.textContent = '잠시만요…'; say('');
+    try {
+      if (su) {
+        const r = await Auth.signUp(email, pw, nick);
+        if (r.confirm) { say('가입 확인 메일을 보냈어요. 메일의 링크를 누른 뒤 로그인해 주세요.', true); sub.disabled = false; sub.textContent = label; return; }
+        toast(`환영해요, ${nick}님 · 첫 번째 보물을 찾으러 가 볼까요?`);
+      } else {
+        await Auth.signIn(email, pw);
+        toast(`다시 오셨군요, ${Auth.user ? Auth.user.nickname : ''}님`);
+      }
+      renderAuth();
+    } catch (err) { say(authMsg(err)); sub.disabled = false; sub.textContent = label; }
+  });
+  Auth.on(u => {
+    navAuth.classList.toggle('in', !!u);
+    navAuth.querySelector('.nav-auth-l').textContent = u ? u.nickname : '로그인';
+    navAuth.setAttribute('aria-label', u ? `내 계정 · ${u.nickname}` : '로그인 또는 회원가입');
+    if (authDlg.open) renderAuth();
+  });
+  Auth.init();
+
+  /* ---------- notice: the treasure hunt ---------- */
+  const notice = $('#notice');
+  const showNotice = () => {
+    if (store.get('jbt-notice-v1', false) || !notice.hidden) return;
+    notice.hidden = false;
+    if (MOTION) gsap.fromTo(notice, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out' });
+  };
+  const closeNotice = () => {
+    store.set('jbt-notice-v1', true);
+    if (notice.hidden) return;
+    if (MOTION) gsap.to(notice, { opacity: 0, y: 16, duration: .5, ease: 'power2.in', onComplete: () => { notice.hidden = true; } });
+    else notice.hidden = true;
+  };
+  document.addEventListener('click', e => {
+    const oa = e.target.closest('[data-open-auth]');
+    if (oa) { if (oa.closest('#notice')) closeNotice(); openAuth(oa.dataset.openAuth || 'login'); }
+    if (e.target.closest('[data-close-notice]')) closeNotice();
+  });
+  const revealChrome = () => { Sound.start(); $('#sound').classList.add('show'); setTimeout(showNotice, 2200); };
 
   /* ---------- everything below is motion only ---------- */
   const loader = $('#loader');
-  if (!MOTION) { loader.remove(); return; }
+  if (!MOTION) { loader.remove(); revealChrome(); return; }
 
   /* magnetic buttons */
   if (finePointer) $$('[data-magnetic]').forEach(el => {
@@ -1703,7 +2146,7 @@ void main(){
     // deep jewel pigments: ink violet, wine, midnight, plum, aubergine
     gl.uniform3fv(uC, new Float32Array([.14, .04, .30, .26, .03, .15, .04, .05, .24, .27, .045, .255, .105, .02, .165, 0, 0, 0]));
     const state = { blooms: [[-.48, .06, 0], [.52, -.14, 0], [.02, -.58, 0], [.22, .48, 0], [-.12, .1, 0], [.03, -.02, 0]], sweep: 0, lift: 0, alive: true };
-    const k = Math.min(1, devicePixelRatio || 1) * .75;
+    const k = Math.min(1.5, devicePixelRatio || 1) * .75;
     const draw = now => {
       if (!state.alive) return;
       requestAnimationFrame(draw);
@@ -1722,33 +2165,28 @@ void main(){
   /* the walk: a confident stride down the dark hall toward the violet vault door, one heel strike at a time */
   const ldHall = $('#ld-hall'), lctx = ldHall.getContext('2d');
   const walk = { z: -20, glow: 1, on: true };
-  let actx = null, lastStep = -1;
-  try { const AC = window.AudioContext || window.webkitAudioContext; if (AC) { actx = new AC(); if (actx.state !== 'running') actx.resume().catch(() => {}); } } catch (e) { actx = null; }
-  const heel = () => {
-    if (!actx || actx.state !== 'running') return;
-    const sr = actx.sampleRate, buf = actx.createBuffer(1, Math.round(sr * .12), sr), d = buf.getChannelData(0);
-    for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * Math.exp(-i / (sr * .01));
-    const src = actx.createBufferSource(), bp = actx.createBiquadFilter(), g = actx.createGain(), dl = actx.createDelay(), eg = actx.createGain();
-    src.buffer = buf; bp.type = 'bandpass'; bp.frequency.value = 2300; bp.Q.value = 2.5; g.gain.value = .3; dl.delayTime.value = .16; eg.gain.value = .12;
-    src.connect(bp); bp.connect(g); g.connect(actx.destination); g.connect(dl); dl.connect(eg); eg.connect(actx.destination);
-    src.start();
-  };
+  let lastStep = -1;
+  { const c0 = Sound.ensure(); if (c0 && c0.state !== 'running') c0.resume().catch(() => {}); }
   (function walkLoop() {
     if (!walk.on) return;
     requestAnimationFrame(walkLoop);
-    const W = innerWidth, H = innerHeight;
-    if (ldHall.width !== W || ldHall.height !== H) { ldHall.width = W; ldHall.height = H; }
-    const step = (walk.z + 20) / 2.22, k = Math.floor(step), fr = step - k, side = k % 2 ? 1 : -1;
-    const amp = Math.min(1, -walk.z / 2), sw = Math.sin(Math.PI * fr);
-    const cam = { z: walk.z, x: .07 * sw * side * amp, y: (.05 * sw * sw - .025 - .035 * Math.exp(-fr * 10)) * amp };
-    lctx.setTransform(1, 0, 0, 1, 0, 0); lctx.clearRect(0, 0, W, H);
-    lctx.translate(W / 2, H / 2); lctx.rotate(.004 * sw * side * amp); lctx.translate(-W / 2, -H / 2);
-    drawHall(lctx, W, H, false, cam, walk.glow);
-    if (k !== lastStep && amp > .05) {
-      lastStep = k;
-      heel();
-      gsap.fromTo(walk, { glow: 1.4 }, { glow: 1, duration: .45, ease: 'power2.out', overwrite: 'auto' });
-    }
+    try {
+      const W = innerWidth, H = innerHeight, dpr = Math.min(2, devicePixelRatio || 1);
+      const bw = Math.round(W * dpr), bh = Math.round(H * dpr);
+      if (ldHall.width !== bw || ldHall.height !== bh) { ldHall.width = bw; ldHall.height = bh; }
+      const step = (walk.z + 20) / 2.22, k = Math.floor(step), fr = step - k, side = k % 2 ? 1 : -1;
+      const amp = Math.min(1, -walk.z / 2), sw = Math.sin(Math.PI * fr);
+      const cam = { z: walk.z, x: .07 * sw * side * amp, y: (.05 * sw * sw - .025 - .035 * Math.exp(-fr * 10)) * amp };
+      lctx.setTransform(1, 0, 0, 1, 0, 0); lctx.clearRect(0, 0, bw, bh);
+      lctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      lctx.translate(W / 2, H / 2); lctx.rotate(.004 * sw * side * amp); lctx.translate(-W / 2, -H / 2);
+      drawHall(lctx, W, H, false, cam, walk.glow);
+      if (k !== lastStep && amp > .05) {
+        lastStep = k;
+        Sound.heel();
+        gsap.fromTo(walk, { glow: 1.4 }, { glow: 1, duration: .45, ease: 'power2.out', overwrite: 'auto' });
+      }
+    } catch (err) {}
   })();
 
   const num = $('#loader-num'), bar = $('#loader-bar'), cnt = { v: 0 };
@@ -1776,7 +2214,8 @@ void main(){
     .to('#ld-wash', { scale: 1.06, duration: 1.6, ease: 'sine.inOut' }, 4.8)
     .to(loader, { opacity: 0, duration: 1.4, ease: 'sine.inOut' }, 4.95)
     .add(heroIntro(), 5.0)
-    .call(() => { walk.on = false; if (actx) actx.close().catch(() => {}); if (wash) wash.stop(); loader.remove(); root.classList.remove('is-loading'); if (lenis) lenis.start(); ScrollTrigger.refresh(); }, null, 6.4);
+    .call(revealChrome, null, 5.0)
+    .call(() => { walk.on = false; if (wash) wash.stop(); loader.remove(); root.classList.remove('is-loading'); if (lenis) lenis.start(); ScrollTrigger.refresh(); }, null, 6.4);
 
   /* ---------- scroll choreography (created in page order) ---------- */
   gsap.fromTo('#hero-in', { yPercent: 0, scale: 1, opacity: 1 }, { yPercent: -14, scale: .94, opacity: 0, ease: 'none', immediateRender: false,
