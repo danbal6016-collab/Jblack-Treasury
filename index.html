@@ -194,12 +194,10 @@ a:hover > .roll .roll-in,button:hover > .roll .roll-in,.roll:hover .roll-in,a:fo
 .hero-cta{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:10px}
 .hero-foot{position:absolute;left:0;right:0;bottom:0;z-index:1;padding-bottom:30px}
 .hero-foot .wrap{display:flex;justify-content:flex-end;align-items:center;gap:16px;max-width:1360px}
-.hf-line{font-family:var(--f-serif);font-size:15px;letter-spacing:.16em;color:var(--gold-hi);text-shadow:0 2px 18px rgba(0,0,0,.85)}
 .hf-cue{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;
   font-family:var(--f-display);font-size:9.5px;letter-spacing:.42em;padding-left:.42em;text-transform:uppercase;color:var(--dim)}
 .hf-cue i{position:relative;width:1px;height:40px;background:rgba(214,176,106,.2);overflow:hidden}
 .hf-cue i::after{content:"";position:absolute;left:0;top:-40%;width:1px;height:40%;background:var(--gold-hi);animation:drip 3s var(--ease) infinite}
-@media (max-width:760px){.hero-foot .wrap{justify-content:center}.hf-line{margin-bottom:78px;font-size:14px}}
 @media (max-width:480px){.eyebrow{font-size:10px;letter-spacing:.3em;padding-left:.3em;gap:8px}.eyebrow::before,.eyebrow::after{width:16px}}
 
 /* ---------- shared section bits ---------- */
@@ -611,7 +609,6 @@ html.h-scroll .card-end{display:flex;flex:none;width:clamp(320px,30vw,440px)}
     </div>
     <div class="hero-foot" id="hero-foot">
       <div class="wrap">
-        <span class="hf-line">저점매수의 괴도가 되세요</span>
       </div>
       <span class="hf-cue" aria-hidden="true">Scroll<i></i></span>
     </div>
