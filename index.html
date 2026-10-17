@@ -194,12 +194,12 @@ a:hover > .roll .roll-in,button:hover > .roll .roll-in,.roll:hover .roll-in,a:fo
 .hero-cta{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:10px}
 .hero-foot{position:absolute;left:0;right:0;bottom:0;z-index:1;padding-bottom:30px}
 .hero-foot .wrap{display:flex;justify-content:flex-end;align-items:center;gap:16px;max-width:1360px}
-.hf-count{font-family:var(--f-display);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted)}
+.hf-line{font-family:var(--f-serif);font-size:15px;letter-spacing:.16em;color:var(--gold-hi);text-shadow:0 2px 18px rgba(0,0,0,.85)}
 .hf-cue{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;
   font-family:var(--f-display);font-size:9.5px;letter-spacing:.42em;padding-left:.42em;text-transform:uppercase;color:var(--dim)}
 .hf-cue i{position:relative;width:1px;height:40px;background:rgba(214,176,106,.2);overflow:hidden}
 .hf-cue i::after{content:"";position:absolute;left:0;top:-40%;width:1px;height:40%;background:var(--gold-hi);animation:drip 3s var(--ease) infinite}
-@media (max-width:760px){.hf-count{display:none}}
+@media (max-width:760px){.hero-foot .wrap{justify-content:center}.hf-line{margin-bottom:78px;font-size:14px}}
 @media (max-width:480px){.eyebrow{font-size:10px;letter-spacing:.3em;padding-left:.3em;gap:8px}.eyebrow::before,.eyebrow::after{width:16px}}
 
 /* ---------- shared section bits ---------- */
@@ -310,9 +310,7 @@ html.motion .kicker.in::before{transform:scaleX(1)}
 .card-lot{margin:0;font-family:var(--f-display);font-size:10.5px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--dim)}
 .card-name{margin:8px 0 4px;font-family:var(--f-display);font-weight:500;font-size:30px;line-height:1.1;letter-spacing:-.015em}
 .card-kind{margin:0 0 12px;font-size:13px;color:var(--gold)}
-.card-line{margin:0 0 16px;font-size:13.5px;line-height:1.75;color:var(--muted)}
-.card-tags{list-style:none;padding:0;margin:0 0 20px;display:flex;flex-wrap:wrap;gap:6px}
-.card-tags li{font-size:11.5px;line-height:1;padding:6px 10px;border:1px solid rgba(166,157,182,.2);border-radius:999px;color:var(--muted)}
+.card-line{margin:0 0 20px;font-size:13.5px;line-height:1.75;color:var(--muted)}
 .card-foot{margin-top:auto;padding-top:16px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px}
 .card-cat{font-family:var(--f-display);font-size:10.5px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:var(--dim)}
 .card-go{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:500;color:var(--gold-hi);text-decoration:none}
@@ -427,7 +425,6 @@ html.h-scroll .card-end{display:flex;flex:none;width:clamp(320px,30vw,440px)}
 .vault-empty{margin:0;padding:48px 12px;text-align:center;color:var(--muted);font-size:14px;line-height:1.8}
 .vault-foot{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;padding:12px 22px;border-top:1px solid var(--line);font-size:12px;color:var(--dim)}
 .vault-foot .kbd{height:20px;padding:0 6px;margin-right:4px}
-.vault-count{margin-left:auto;font-family:var(--f-display);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase}
 @media (hover:none){.vault-keys{display:none}}
 @media (max-width:520px){.row-act .more{display:none}.vault-head{padding:16px 16px 12px}.vault-search{margin:0 16px 6px}.vault-list{padding:4px 6px 12px}}
 
@@ -484,7 +481,6 @@ html.h-scroll .card-end{display:flex;flex:none;width:clamp(320px,30vw,440px)}
 .auth-submit[disabled]{opacity:.6;pointer-events:none}
 .auth-promo{margin-top:20px;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:rgba(214,176,106,.05);font-size:13px;line-height:1.75;color:var(--muted)}
 .auth-promo b{display:block;margin-bottom:2px;font-family:var(--f-display);font-size:10.5px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
-.auth-mode{margin:12px 0 0;font-size:11.5px;color:var(--dim);text-align:center}
 .acct{padding:6px 0 18px}
 .acct-k{margin:0;font-family:var(--f-display);font-style:italic;font-size:14px;color:var(--gold)}
 .acct-name{margin:4px 0 0;font-family:var(--f-display);font-size:34px;line-height:1.15;letter-spacing:-.01em;overflow-wrap:anywhere}
@@ -615,7 +611,7 @@ html.h-scroll .card-end{display:flex;flex:none;width:clamp(320px,30vw,440px)}
     </div>
     <div class="hero-foot" id="hero-foot">
       <div class="wrap">
-        <span class="hf-count"><span data-count="total">18</span> Lots · <span data-count="open">1</span> Open · <span data-count="sealed">17</span> Sealed</span>
+        <span class="hf-line">저점매수의 괴도가 되세요</span>
       </div>
       <span class="hf-cue" aria-hidden="true">Scroll<i></i></span>
     </div>
@@ -636,7 +632,7 @@ html.h-scroll .card-end{display:flex;flex:none;width:clamp(320px,30vw,440px)}
         <div class="feature">
           <article class="ft ft-tarot" data-panel>
             <div>
-              <p class="lot-label">Lot 01 · Black Onyx <span class="pill open"><i></i>Open</span></p>
+              <p class="lot-label">Lot 01 · Amethyst <span class="pill open"><i></i>Open</span></p>
               <h3 class="ft-title" data-split>JBlack Tarot</h3>
               <p class="ft-script gold-text">Cards don't lie.</p>
               <p class="ft-copy">누구나 쉽게 닿을 수 있고, 아름답고, 함께 나누는 타로. 흔들리는 마음에 평온과 안정을 남기기 위해 만든 제이블랙 트레저리의 첫 번째 작품입니다.</p>
@@ -802,7 +798,6 @@ html.h-scroll .card-end{display:flex;flex:none;width:clamp(320px,30vw,440px)}
       <span class="vault-keys"><span class="kbd">↑</span><span class="kbd">↓</span>이동</span>
       <span class="vault-keys"><span class="kbd">Enter</span>열기</span>
       <span class="vault-keys"><span class="kbd">Esc</span>닫기</span>
-      <span class="vault-count" id="vault-count"></span>
     </div>
   </div>
 </dialog>
@@ -824,7 +819,7 @@ html.h-scroll .card-end{display:flex;flex:none;width:clamp(320px,30vw,440px)}
 
   // 새 사이트가 공개되면 status를 'open'으로 바꾸고 url에 주소를 넣으면 카드와 바로가기 창에 함께 반영됩니다.
   const LOTS = [
-    { lot: '01', name: 'JBlack Tarot', kind: "Jennie's Black Tarot · 감성 AI 타로", cat: 'self', gem: 'Black Onyx', g: ['#bcaee0', '#0a0910'], status: 'open', url: 'https://www.jblacktarot.com/',
+    { lot: '01', name: 'JBlack Tarot', kind: "Jennie's Black Tarot · 감성 AI 타로", cat: 'self', gem: 'Amethyst', g: ['#c9a2ff', '#2b0c52'], status: 'open', url: 'https://www.jblacktarot.com/',
       line: '카드는 거짓말하지 않는다. 누구나 쉽게, 아름답게 보는 AI 타로로 흔들리는 마음에 평온을 남깁니다.', tags: ['타로 리딩', 'AI 해석', '10–30대 MZ'] },
     { lot: '02', name: 'Rate Your Life', kind: '메모리 뮤지엄 · 인생 추구미', cat: 'self', gem: 'Akoya Pearl', cut: 'pearl', g: ['#fffaf2', '#9d93ad'],
       stops: [[0, '#ffffff'], [.42, '#f4ecef'], [.78, '#c4b8cf'], [1, '#7a7090']],
@@ -858,32 +853,67 @@ html.h-scroll .card-end{display:flex;flex:none;width:clamp(320px,30vw,440px)}
       line: '단 한 번의 데뷔를 향한 서바이벌. 비주얼과 스타일, 콘셉트까지 남돌·여돌을 직접 커스텀해 나만의 그룹을 만들고, 무대와 투표로 최종 데뷔조를 가려요.', tags: ['서바이벌', '남돌 커스텀', '여돌 커스텀', '투표'] },
     { lot: '16', name: 'BANG! Digital', kind: '뱅! 디지털 버전', cat: 'play', gem: 'Imperial Topaz', g: ['#ffad5c', '#6a2600'],
       line: '보안관, 부관, 무법자, 배신자. 정체를 숨긴 채 서로를 겨누는 카드게임 뱅!을 온라인으로.', tags: ['카드게임', '정체 숨기기', '멀티플레이'] },
-    { lot: '17', name: 'After Midnight', kind: '한국 클럽 게임', cat: 'play', gem: 'Tanzanite', g: ['#9c88ff', '#1f1259'],
+    { lot: '17', name: 'After Midnight', kind: '한국 클럽 게임', cat: 'play', gem: 'Tanzanite', g: ['#8e9bff', '#151b5e'],
       line: '줄 서기와 입장 심사부터 테이블, 플로어까지. 한국 클럽의 밤을 그대로 옮긴 게임에서 오늘 밤의 주인공이 되어 보세요.', tags: ['클럽', '나이트라이프', '멀티플레이'] },
     { lot: '18', name: 'Muse Salon', kind: '메이크업 게임', cat: 'play', gem: 'Kunzite', g: ['#ffbde9', '#743066'],
       line: '손님마다 다른 요구사항을 듣고, 피부 톤부터 아이라인 끝까지 세심하게 맞춰 완성하는 메이크업 게임.', tags: ['메이크업', '손님 맞춤', '뷰티'] }
   ];
-  // 3D 렌더링용 보석 재질: 투명 브릴리언트 컷(tint·굴절률), 광택 불투명(mode 1), 진주(2), 문스톤(3), 오팔(4)
+  // 3D 렌더링용 보석 재질: 투명(tint·굴절률), 광택 불투명(mode 1), 진주(2), 문스톤(3), 오팔(4)
+  // cut 은 사이트마다 다른 시그니처 컷이에요. 비워 두면 라운드 브릴리언트.
   const SPEC = {
-    '01': { mode: 1, base: [.012, .010, .018], metal: 0 },
+    '01': { cut: 'marquise', tint: [.74, .3, 1], ior: 1.95 },
     '02': { mode: 2, mesh: 'sphere', base: [.95, .92, .9] },
-    '03': { tint: [.3, .46, 1], ior: 2.05 },
+    '03': { cut: 'cushion', tint: [.3, .46, 1], ior: 2.05 },
     '04': { mode: 3, mesh: 'oval', base: [.86, .89, .97] },
-    '05': { tint: [1, .7, .62], ior: 1.95 },
-    '06': { tint: [.4, 1, .6], ior: 1.9 },
-    '07': { tint: [1, .16, .28], ior: 2.05 },
-    '08': { mode: 1, base: [.6, .62, .68], metal: 1 },
-    '09': { tint: [.25, .62, .38], tint2: [.92, .14, .2], ior: 1.95 },
-    '10': { tint: [1, .76, .26], ior: 1.95 },
-    '11': { tint: [.2, 1, .5], ior: 1.9 },
-    '12': { tint: [.78, .09, .18], ior: 2.0 },
-    '13': { tint: [.55, .95, 1], ior: 1.9 },
-    '14': { tint: [.33, .9, .58], tint2: [.78, .3, .92], ior: 2.0 },
+    '05': { cut: 'pear', tint: [1, .7, .62], ior: 1.95 },
+    '06': { cut: 'asscher', tint: [.4, 1, .6], ior: 1.9 },
+    '07': { cut: 'trillion', tint: [1, .16, .28], ior: 2.05 },
+    '08': { cut: 'octagon', mode: 1, base: [.6, .62, .68], metal: 1 },
+    '09': { cut: 'kite', tint: [.32, .74, .46], tint2: [.95, .2, .26], ior: 1.95 },
+    '10': { cut: 'radiant', tint: [1, .76, .26], ior: 1.95 },
+    '11': { cut: 'emerald', tint: [.2, 1, .5], ior: 1.9 },
+    '12': { cut: 'princess', tint: [.78, .09, .18], ior: 2.0 },
+    '13': { cut: 'baguette', tint: [.55, .95, 1], ior: 1.9 },
+    '14': { cut: 'halfmoon', tint: [.33, .9, .58], tint2: [.78, .3, .92], ior: 2.0 },
     '15': { tint: [.98, .99, 1], ior: 2.42 },
-    '16': { tint: [1, .56, .22], ior: 1.95 },
-    '17': { tint: [.5, .4, 1], ior: 2.05 },
-    '18': { tint: [1, .58, .9], ior: 1.95 }
+    '16': { cut: 'hexagon', tint: [1, .56, .22], ior: 1.95 },
+    '17': { cut: 'rose', tint: [.38, .44, 1], ior: 2.05 },
+    '18': { cut: 'oval', tint: [1, .58, .9], ior: 1.95 }
   };
+  // 시그니처 컷: 위에서 내려다본 거들 윤곽(볼록 다각형)과 면을 내는 방식 (b 브릴리언트, s 스텝, r 로즈)
+  const SHAPES = (() => {
+    const ring = (n, f, a0 = 0, a1 = Math.PI * 2, closed = true) => Array.from({ length: n }, (_, i) => f(a0 + (a1 - a0) * i / (closed ? n : n - 1)));
+    const oct = (ax, az, k) => [[ax - k, az], [-ax + k, az], [-ax, az - k], [-ax, -az + k], [-ax + k, -az], [ax - k, -az], [ax, -az + k], [ax, az - k]];
+    const vesica = (w, l) => {
+      const c = (l * l - w * w) / (2 * w), R = w + c, t0 = Math.acos(c / R);
+      return [...ring(25, t => [-c + R * Math.cos(t), R * Math.sin(t)], -t0, t0, false), ...ring(25, t => [c - R * Math.cos(t), R * Math.sin(t)], -t0, t0, false)];
+    };
+    const tri = b => {
+      const V = [90, 210, 330].map(a => [Math.cos(a * Math.PI / 180), Math.sin(a * Math.PI / 180)]), out = [];
+      V.forEach((a, i) => {
+        const c = V[(i + 1) % 3], m = Math.hypot(a[0] + c[0], a[1] + c[1]), n = [(a[0] + c[0]) / m, (a[1] + c[1]) / m];
+        for (let j = 0; j < 12; j++) { const t = j / 12, k = b * Math.sin(Math.PI * t); out.push([a[0] + (c[0] - a[0]) * t + n[0] * k, a[1] + (c[1] - a[1]) * t + n[1] * k]); }
+      });
+      return out;
+    };
+    return {
+      oval:     { s: 'b', pts: ring(64, a => [Math.cos(a) * .7, Math.sin(a)]) },
+      marquise: { s: 'b', pts: vesica(.5, 1) },
+      pear:     { s: 'b', pts: [...ring(48, a => [Math.cos(a) * .6, Math.sin(a) * .6 - .38]), [0, 1]] },
+      cushion:  { s: 'b', pts: ring(64, a => { const c = Math.cos(a), n = Math.sin(a); return [Math.sign(c) * Math.pow(Math.abs(c), .55) * .94, Math.sign(n) * Math.pow(Math.abs(n), .55)]; }) },
+      princess: { s: 'b', pts: [[1, 1], [-1, 1], [-1, -1], [1, -1]] },
+      radiant:  { s: 'b', pts: oct(.74, 1, .2) },
+      trillion: { s: 'b', pts: tri(.1), k: 6, ph: 30 },
+      kite:     { s: 'b', pts: [[0, 1], [-.52, .18], [0, -.62], [.52, .18]] },
+      halfmoon: { s: 'b', pts: ring(33, a => [Math.cos(a), Math.sin(a)], 0, Math.PI, false) },
+      emerald:  { s: 's', pts: oct(.68, 1, .2) },
+      asscher:  { s: 's', pts: oct(1, 1, .3) },
+      baguette: { s: 's', pts: [[.4, 1], [-.4, 1], [-.4, -1], [.4, -1]] },
+      hexagon:  { s: 's', pts: ring(6, a => [Math.cos(a), Math.sin(a)]) },
+      octagon:  { s: 's', pts: ring(8, a => [Math.cos(a), Math.sin(a)], Math.PI / 8, Math.PI / 8 + Math.PI * 2) },
+      rose:     { s: 'r', pts: ring(48, a => [Math.cos(a), Math.sin(a)]) }
+    };
+  })();
   // 히어로 전시실의 보석: 좌우(side), 깊이(z), 화면 가로 위치 비율(frac), 보석 크기(size), 받침대 높이(ph)
   const VITRINES = [
     { lot: '07', side: -1, z: 5.4, frac: .385, size: .98, ph: 1.05, c2: '#ff3d9a' },
@@ -940,7 +970,115 @@ html.h-scroll .card-end{display:flex;flex:none;width:clamp(320px,30vw,440px)}
         planes.push(n[0], n[1], n[2], dot(n, cen));
         for (let i = 1; i < f.length - 1; i++) [f[0], f[i], f[i + 1]].forEach(p => cut.push(p[0], p[1], p[2], n[0], n[1], n[2]));
       });
-      const NP = planes.length / 4;
+      const NP = planes.length / 4, MAXP = 80;
+      // signature cuts: each is a convex solid written as its facet planes; the mesh is cut out of a block by those same planes,
+      // so the surface that is drawn and the surface the light bounces inside are exactly the same stone
+      const D = Math.PI / 180;
+      const cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+      const face = (pts, n) => {
+        const u = [];
+        pts.forEach(p => { if (!u.some(q => Math.abs(q[0] - p[0]) + Math.abs(q[1] - p[1]) + Math.abs(q[2] - p[2]) < 1e-7)) u.push(p); });
+        if (u.length < 3) return u;
+        const c = u.reduce((s, p) => [s[0] + p[0] / u.length, s[1] + p[1] / u.length, s[2] + p[2] / u.length], [0, 0, 0]);
+        const t1 = norm(cross(n, Math.abs(n[0]) < .9 ? [1, 0, 0] : [0, 1, 0])), t2 = cross(n, t1);
+        return u.map(p => { const d = [p[0] - c[0], p[1] - c[1], p[2] - c[2]]; return [Math.atan2(dot(d, t2), dot(d, t1)), p]; }).sort((a, b) => a[0] - b[0]).map(x => x[1]);
+      };
+      const area = v => { let x = 0, y = 0, z = 0; for (let i = 0; i < v.length; i++) { const a = v[i], b = v[(i + 1) % v.length]; x += (a[1] - b[1]) * (a[2] + b[2]); y += (a[2] - b[2]) * (a[0] + b[0]); z += (a[0] - b[0]) * (a[1] + b[1]); } return Math.hypot(x, y, z) / 2; };
+      const carve = pl => {
+        const B = 4, E = 1e-9;
+        let polys = [[1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0, 0, -1]].map(n => {
+          const k = n.findIndex(x => x), o = [0, 1, 2].filter(i => i !== k), pts = [];
+          for (const a of [-B, B]) for (const b of [-B, B]) { const p = [0, 0, 0]; p[k] = n[k] * B; p[o[0]] = a; p[o[1]] = b; pts.push(p); }
+          return { v: face(pts, n), id: -1 };
+        });
+        pl.forEach((P, id) => {
+          const n = [P[0], P[1], P[2]], next = [], cap = [];
+          polys.forEach(poly => {
+            const v = poly.v, out = [];
+            for (let i = 0; i < v.length; i++) {
+              const a = v[i], b = v[(i + 1) % v.length], da = dot(n, a) - P[3], db = dot(n, b) - P[3];
+              if (da <= E) out.push(a);
+              if (Math.abs(da) <= E) cap.push(a);
+              if ((da < -E && db > E) || (da > E && db < -E)) { const t = da / (da - db), q = [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t]; out.push(q); cap.push(q); }
+            }
+            if (out.length >= 3 && area(out) > 1e-7) next.push({ v: out, id: poly.id });
+          });
+          const f = face(cap, n);
+          if (f.length >= 3 && area(f) > 1e-7) next.push({ v: f, id });
+          polys = next;
+        });
+        return polys;
+      };
+      const facetPlanes = sh => {
+        const P = sh.pts, xs = P.map(p => p[0]), zs = P.map(p => p[1]), g = .02, out = [];
+        const cx = (Math.max(...xs) + Math.min(...xs)) / 2, cz = (Math.max(...zs) + Math.min(...zs)) / 2;
+        const ax = (Math.max(...xs) - Math.min(...xs)) / 2, az = (Math.max(...zs) - Math.min(...zs)) / 2;
+        // a facet with slope s (degrees from the girdle plane) through the point `off` inside the girdle line at height y
+        const F = (s, u, off, y, up, h) => { s *= D; const sn = Math.sin(s), cs = Math.cos(s); return up ? [sn * u[0], cs, sn * u[1], sn * (h - off) + cs * y] : [sn * u[0], -cs, sn * u[1], sn * (h - off) - cs * y]; };
+        const dirs = (n, p0) => Array.from({ length: n }, (_, i) => { const a = (p0 + i * 360 / n) * D; return [Math.cos(a), Math.sin(a)]; });
+        const edges = Q => {
+          const c = Q.reduce((s, p) => [s[0] + p[0] / Q.length, s[1] + p[1] / Q.length], [0, 0]);
+          return Q.map((a, i) => {
+            const b = Q[(i + 1) % Q.length], l = Math.hypot(b[1] - a[1], a[0] - b[0]);
+            let u = [(b[1] - a[1]) / l, (a[0] - b[0]) / l];
+            if (u[0] * (a[0] - c[0]) + u[1] * (a[1] - c[1]) < 0) u = [-u[0], -u[1]];
+            return [u, u[0] * a[0] + u[1] * a[1]];
+          });
+        };
+        if (sh.s === 'b') {
+          // brilliant facets laid out on the shape squeezed into a unit square, then stretched back so fancy shapes keep a real table
+          const Q = P.map(p => [(p[0] - cx) / ax, (p[1] - cz) / az]), h = u => Math.max(...Q.map(p => p[0] * u[0] + p[1] * u[1]));
+          const k = sh.k || 8, ph = sh.ph || 0, st = 360 / k, yT = g + .3, nb = [[0, 1, 0, yT]];
+          dirs(k, ph).forEach(u => nb.push(F(34.5, u, 0, g, 1, h(u))));
+          dirs(2 * k, ph + st / 4).forEach(u => nb.push(F(41, u, 0, g, 1, h(u))));
+          dirs(k, ph + st / 2).forEach(u => nb.push(F(21, u, .42, yT, 1, h(u))));
+          dirs(k, ph).forEach(u => nb.push(F(41, u, 0, -g, 0, h(u))));
+          dirs(2 * k, ph + st / 4).forEach(u => nb.push(F(42.5, u, 0, -g, 0, h(u))));
+          (Q.length <= 12 ? edges(Q) : dirs(16, ph).map(u => [u, h(u)])).forEach(([u, d]) => nb.push([u[0], 0, u[1], d]));
+          const sy = Math.pow(ax * az, .3);
+          nb.forEach(([x, y, z, d]) => { const n = [x / ax, y / sy, z / az]; out.push([n[0], n[1], n[2], d + n[0] * cx + n[2] * cz]); });
+        } else if (sh.s === 's') {
+          // step cut: rows of long facets running parallel to every side, a flat table and a keel underneath
+          const Eg = edges(P), m = Math.min(...Eg.map(([u, d]) => d - u[0] * cx - u[1] * cz));
+          Eg.forEach(([u, d]) => out.push([u[0], 0, u[1], d]));
+          let off = 0, y = g;
+          [[50, .18], [30, .2]].forEach(([s, w]) => { Eg.forEach(([u, d]) => out.push(F(s, u, off, y, 1, d))); off += w * m; y += w * m * Math.tan(s * D); });
+          out.push([0, 1, 0, y]);
+          off = 0; y = -g;
+          [[58, .2], [46, .22], [36, 1]].forEach(([s, w]) => { Eg.forEach(([u, d]) => out.push(F(s, u, off, y, 0, d))); off += w * m; y -= w * m * Math.tan(s * D); });
+          // slim stones get a little more depth so they still hold light
+          const vy = Math.sqrt(.7 / Math.min(m, .7));
+          out.forEach(P => { P[1] /= vy; });
+        } else {
+          // rose cut: a faceted dome of triangles over a flat back
+          out.push([0, -1, 0, g]);
+          dirs(24, 0).forEach(u => out.push([u[0], 0, u[1], 1]));
+          dirs(24, 7.5).forEach(u => out.push(F(64, u, 0, g, 1, 1)));
+          dirs(12, 0).forEach(u => out.push(F(40, u, .25, .5, 1, 1)));
+          dirs(6, 15).forEach(u => out.push(F(18, u, .62, .74, 1, 1)));
+        }
+        return out.map(([x, y, z, d]) => { const l = Math.hypot(x, y, z); return [x / l, y / l, z / l, d / l]; });
+      };
+      const buildCut = sh => {
+        const pl = facetPlanes(sh), polys = carve(pl);
+        if (!polys.length || polys.some(p => p.id < 0)) return null;
+        let lo = [1e9, 1e9, 1e9], hi = [-1e9, -1e9, -1e9];
+        polys.forEach(p => p.v.forEach(v => { for (let i = 0; i < 3; i++) { lo[i] = Math.min(lo[i], v[i]); hi[i] = Math.max(hi[i], v[i]); } }));
+        const c = [(lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2, (lo[2] + hi[2]) / 2];
+        let R = 0;
+        polys.forEach(p => p.v.forEach(v => { R = Math.max(R, Math.hypot(v[0] - c[0], v[2] - c[2])); }));
+        const sc = 1.08 / Math.max(R, (hi[1] - lo[1]) / 2 / .62);
+        const used = [...new Set(polys.map(p => p.id))];
+        if (used.length > MAXP) return null;
+        const buf = new Float32Array(MAXP * 4);
+        used.forEach((id, i) => { const P = pl[id]; buf.set([P[0], P[1], P[2], sc * (P[3] - dot(P, c))], i * 4); });
+        const tris = [];
+        polys.forEach(p => {
+          const n = pl[p.id], v = p.v.map(q => [(q[0] - c[0]) * sc, (q[1] - c[1]) * sc, (q[2] - c[2]) * sc]);
+          for (let i = 1; i < v.length - 1; i++) [v[0], v[i], v[i + 1]].forEach(q => tris.push(q[0], q[1], q[2], n[0], n[1], n[2]));
+        });
+        return { pl: buf, np: used.length, tris };
+      };
       const sphere = (sx, sy, sz) => {
         const out = [], NU = 44, NV = 28;
         const V = (u, v) => { const th = u / NU * Math.PI * 2, ph = v / NV * Math.PI, x = Math.sin(ph) * Math.cos(th), y = Math.cos(ph), z = Math.sin(ph) * Math.sin(th); return [x * sx, y * sy, z * sz, ...norm([x / sx, y / sy, z / sz])]; };
@@ -949,7 +1087,7 @@ html.h-scroll .card-end{display:flex;flex:none;width:clamp(320px,30vw,440px)}
       };
       const vs = 'attribute vec3 aPos;attribute vec3 aNor;uniform mat4 uMVP;varying vec3 vPos;varying vec3 vNor;void main(){vPos=aPos;vNor=aNor;gl_Position=uMVP*vec4(aPos,1.);}';
       const fs = `precision highp float;
-uniform vec4 uPl[${NP}];
+uniform vec4 uPl[${MAXP}]; uniform int uNP;
 uniform mat3 uRot; uniform vec3 uCam; uniform vec3 uTint; uniform float uIor; uniform float uMode; uniform vec3 uBase; uniform float uMetal; uniform float uTime;
 varying vec3 vPos; varying vec3 vNor;
 float h31(vec3 p){p=fract(p*.3183099+.1);p*=17.;return fract(p.x*p.y*p.z*(p.x+p.y+p.z));}
@@ -973,7 +1111,7 @@ vec3 inside(vec3 o,vec3 dir){
   vec3 col=vec3(0.),att=vec3(1.);
   for(int b=0;b<4;b++){
     float tm=100.; vec3 nh=vec3(0.,1.,0.);
-    for(int i=0;i<${NP};i++){vec3 n=uPl[i].xyz;float dn=dot(n,dir);if(dn>1e-4){float t=(uPl[i].w-dot(n,o))/dn;if(t>1e-4&&t<tm){tm=t;nh=n;}}}
+    for(int i=0;i<${MAXP};i++){if(i>=uNP)break;vec3 n=uPl[i].xyz;float dn=dot(n,dir);if(dn>1e-4){float t=(uPl[i].w-dot(n,o))/dn;if(t>1e-4&&t<tm){tm=t;nh=n;}}}
     o+=dir*tm;
     att*=uTint;
     vec3 tg=refract(dir,-nh,uIor);
@@ -1029,12 +1167,17 @@ void main(){
       if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return null;
       gl.useProgram(prog);
       const U = {};
-      ['uMVP', 'uRot', 'uCam', 'uTint', 'uIor', 'uMode', 'uBase', 'uMetal', 'uTime'].forEach(k => { U[k] = gl.getUniformLocation(prog, k); });
-      gl.uniform4fv(gl.getUniformLocation(prog, 'uPl'), new Float32Array(planes));
+      ['uMVP', 'uRot', 'uCam', 'uTint', 'uIor', 'uMode', 'uBase', 'uMetal', 'uTime', 'uPl', 'uNP'].forEach(k => { U[k] = gl.getUniformLocation(prog, k); });
       const aPos = gl.getAttribLocation(prog, 'aPos'), aNor = gl.getAttribLocation(prog, 'aNor');
       gl.enableVertexAttribArray(aPos); gl.enableVertexAttribArray(aNor);
       const mk = arr => { const b = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, b); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(arr), gl.STATIC_DRAW); return { b, n: arr.length / 6 }; };
-      const MESH = { cut: mk(cut), sphere: mk(sphere(1, 1, 1)), oval: mk(sphere(.8, .62, 1)) };
+      const MESH = { sphere: mk(sphere(1, 1, 1)), oval: mk(sphere(.8, .62, 1)) };
+      const roundPl = new Float32Array(MAXP * 4); roundPl.set(planes);
+      const CUTS = { round: { pl: roundPl, np: NP, mesh: mk(cut) } };
+      new Set(Object.values(SPEC).map(s => s.cut).filter(Boolean)).forEach(k => {
+        try { const r = SHAPES[k] && buildCut(SHAPES[k]); if (r) CUTS[k] = { pl: r.pl, np: r.np, mesh: mk(r.tris) }; } catch (e) {}
+      });
+      let curCut = null;
       gl.enable(gl.DEPTH_TEST); gl.enable(gl.CULL_FACE); gl.enable(gl.SCISSOR_TEST);
       const mul3 = (A, B) => { const M = []; for (let c = 0; c < 3; c++) for (let r = 0; r < 3; r++) M[c * 3 + r] = A[r] * B[c * 3] + A[3 + r] * B[c * 3 + 1] + A[6 + r] * B[c * 3 + 2]; return M; };
       const mul4 = (A, B) => { const M = []; for (let c = 0; c < 4; c++) for (let r = 0; r < 4; r++) { let s = 0; for (let k = 0; k < 4; k++) s += A[k * 4 + r] * B[c * 4 + k]; M[c * 4 + r] = s; } return M; };
@@ -1050,6 +1193,8 @@ void main(){
           if (px > cv.width) cv.width = cv.height = Math.min(1024, Math.ceil(px / 64) * 64);
           gl.viewport(0, 0, px, px); gl.scissor(0, 0, px, px);
           gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+          // fancy cuts lean a little further toward the viewer so their outline reads as the signature it is
+          if (spec.cut) tilt += .22;
           const cs = Math.cos(spin), ss = Math.sin(spin), ct = Math.cos(tilt), st = Math.sin(tilt);
           const R = mul3([1, 0, 0, 0, ct, st, 0, -st, ct], [cs, 0, -ss, 0, 1, 0, ss, 0, cs]);
           gl.uniformMatrix4fv(U.uMVP, false, mul4(PROJ, [R[0], R[1], R[2], 0, R[3], R[4], R[5], 0, R[6], R[7], R[8], 0, 0, 0, -DIST, 1]));
@@ -1063,7 +1208,9 @@ void main(){
           gl.uniform3fv(U.uBase, spec.base || [0, 0, 0]);
           gl.uniform1f(U.uMetal, spec.metal || 0);
           gl.uniform1f(U.uTime, t);
-          const m = MESH[spec.mesh || 'cut'];
+          const C = CUTS[spec.cut] || CUTS.round;
+          if (C !== curCut) { gl.uniform4fv(U.uPl, C.pl); gl.uniform1i(U.uNP, C.np); curCut = C; }
+          const m = (spec.mesh && MESH[spec.mesh]) || C.mesh;
           gl.bindBuffer(gl.ARRAY_BUFFER, m.b);
           gl.vertexAttribPointer(aPos, 3, gl.FLOAT, false, 24, 0);
           gl.vertexAttribPointer(aNor, 3, gl.FLOAT, false, 24, 12);
@@ -1087,6 +1234,30 @@ void main(){
     }
     const shade = d => .1 + .82 * Math.pow((Math.cos((d - 315) * Math.PI / 180) + 1) / 2, 1.8);
     const poly = (pts, o) => `<polygon points="${pts.join(' ')}" fill="${lt}" fill-opacity="${o.toFixed(2)}"/>`;
+    const sh = SHAPES[(SPEC[L.lot] || {}).cut];
+    if (sh) {
+      // the signature cut seen from above: its outline, a ring of facets and the table
+      const P = sh.pts, xs = P.map(p => p[0]), zs = P.map(p => p[1]);
+      const cx = (Math.max(...xs) + Math.min(...xs)) / 2, cz = (Math.max(...zs) + Math.min(...zs)) / 2;
+      const sc = 21.5 / Math.max(...P.map(p => Math.hypot(p[0] - cx, p[1] - cz)));
+      const O = [];
+      for (let k = 0; k < 24; k++) {
+        const a = k * 15 * Math.PI / 180, u = [Math.cos(a), Math.sin(a)];
+        let best = P[0], bd = -1e9;
+        P.forEach(p => { const d = (p[0] - cx) * u[0] + (p[1] - cz) * u[1]; if (d > bd) { bd = d; best = p; } });
+        if (O[O.length - 1] !== best) O.push(best);
+      }
+      if (O.length > 1 && O[0] === O[O.length - 1]) O.pop();
+      const at = (p, f) => (24 + (p[0] - cx) * sc * f).toFixed(2) + ',' + (24 - (p[1] - cz) * sc * f).toFixed(2);
+      const tf = sh.s === 's' ? .62 : .48, outer = O.map(p => at(p, 1)), table = O.map(p => at(p, tf));
+      let f = '';
+      O.forEach((p, i) => {
+        const j = (i + 1) % O.length, q = O[j], d = Math.atan2(-(p[1] + q[1] - 2 * cz), p[0] + q[0] - 2 * cx) * 180 / Math.PI + 90;
+        f += poly([table[i], table[j], outer[j], outer[i]], shade(d) * .75 + .05);
+      });
+      return `<svg viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${lt}" stop-opacity=".95"/><stop offset="1" stop-color="${lt}" stop-opacity=".22"/></linearGradient></defs>`
+        + `<polygon points="${outer.join(' ')}" fill="${dk}"/><g stroke="#fff" stroke-opacity=".16" stroke-width=".35">${f}</g><polygon points="${table.join(' ')}" fill="url(#${id})"/></svg>`;
+    }
     let facets = '';
     for (let k = 0; k < 8; k++) {
       const a = k * 45, T0 = P2(9.5, a), T1 = P2(9.5, a + 45), Sk = P2(15.5, a + 22.5), Sp = P2(15.5, a - 22.5), O0 = P2(22, a), Oh = P2(22, a + 22.5), O1 = P2(22, a + 45);
@@ -1369,7 +1540,6 @@ void main(){
       <h3 class="card-name">${L.name}</h3>
       <p class="card-kind">${L.kind}</p>
       <p class="card-line">${L.line}</p>
-      <ul class="card-tags">${L.tags.map(t => `<li>${t}</li>`).join('')}</ul>
       <div class="card-foot"><span class="card-cat">Lot ${L.lot}</span>${open
         ? `<a class="card-go" href="${L.url}" target="_blank" rel="noopener" aria-label="${L.name} 바로가기 (새 탭)">바로가기 <span aria-hidden="true">↗</span></a>`
         : `<span class="card-soon">${LOCK}공개 예정</span>`}</div>
@@ -1388,9 +1558,6 @@ void main(){
   filters.innerHTML = [['all', '전체', LOTS.length], ...ORDER.map(c => [c, CATS[c].ko, LOTS.filter(l => l.cat === c).length])]
     .map(([c, label, n]) => `<button class="chip" type="button" data-cat="${c}" aria-pressed="${c === 'all'}">${label}<b>${n}</b></button>`).join('');
 
-  const nOpen = LOTS.filter(isOpen).length;
-  const counts = { total: LOTS.length, open: nOpen, sealed: LOTS.length - nOpen };
-  $$('[data-count]').forEach(el => { el.textContent = counts[el.dataset.count]; });
   $('#col-total').textContent = pad(LOTS.length);
 
   const isMac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
@@ -1515,7 +1682,6 @@ void main(){
 
   /* ---------- quick access window ---------- */
   const vq = $('#vault-q'), vlist = $('#vault-list');
-  $('#vault-count').textContent = `Open ${counts.open} · Sealed ${counts.sealed}`;
   const norm = s => s.toLowerCase().replace(/\s+/g, '');
   const hay = LOTS.map(L => norm([L.lot, L.name, L.kind, L.line, L.gem, L.tags.join(' '), CATS[L.cat].en, CATS[L.cat].ko].join(' ')));
   function row(L) {
@@ -1986,8 +2152,7 @@ void main(){
         <p class="auth-err" id="auth-err" role="alert"></p>
         <button class="btn btn-gold auth-submit" type="submit">${su ? '가입하고 보물 모으기' : '로그인'}</button>
       </form>
-      <div class="auth-promo"><b>Treasure Hunt</b>같은 이메일로 18개 사이트에 모두 가입하면, 각 사이트에서 블랙코인 500개를 드려요.</div>
-      ${Auth.demo ? '<p class="auth-mode">데모 모드 · 계정 정보가 이 브라우저에만 저장돼요</p>' : ''}`;
+      <div class="auth-promo"><b>Treasure Hunt</b>같은 이메일로 18개 사이트에 모두 가입하면, 각 사이트에서 블랙코인 500개를 드려요.</div>`;
   }
   function openAuth(view) {
     authView = view === 'signup' ? 'signup' : 'login';
