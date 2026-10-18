@@ -231,6 +231,10 @@ html.motion .kicker.in::before{transform:scaleX(1)}
 .ft-copy{margin:14px 0 0;max-width:30em;color:var(--muted);font-size:15px;line-height:1.85}
 .ft-tarot .btn{margin-top:30px}
 .mosaic{filter:blur(6px) url(#mosaic);-webkit-user-select:none;user-select:none;pointer-events:none}
+.mosaic-cv .mosaic{filter:none;position:relative}
+.mosaic-cv .mosaic > :not(.mosaic-c){visibility:hidden}
+.mosaic-c{position:absolute;left:0;top:0;pointer-events:none}
+.mosaic-blur .mosaic{filter:blur(10px)}
 .specs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;margin:28px 0 32px}
 .specs div{border-top:1px solid var(--line);padding-block:12px}
 .specs dt{font-family:var(--f-display);font-size:10.5px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--dim)}
@@ -281,14 +285,10 @@ html.motion .kicker.in::before{transform:scaleX(1)}
 .chip:hover{border-color:var(--gold);color:var(--fg)}
 .chip[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#1d1407}
 .chip[aria-pressed="true"] b{color:rgba(29,20,7,.6)}
-.col-progress{display:none;align-items:center;gap:14px;font-family:var(--f-display);font-size:13px;letter-spacing:.12em;color:var(--muted);font-variant-numeric:tabular-nums lining-nums}
-.col-progress i{position:relative;width:160px;height:1px;background:rgba(166,157,182,.25)}
-.col-progress b{position:absolute;inset:0;transform-origin:left;transform:scaleX(0);background:var(--gold)}
-.col-progress #col-cur{color:var(--gold-hi)}
-.col-track{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;max-width:1280px;margin-inline:auto;
+.col-track{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;max-width:1280px;margin-inline:auto;
   padding-left:max(var(--gutter),env(safe-area-inset-left,0px));padding-right:max(var(--gutter),env(safe-area-inset-right,0px))}
-@media (max-width:1040px){.col-track{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:640px){.col-track{grid-template-columns:1fr}.col-tools{align-items:flex-start}}
+@media (max-width:899px){.col-track{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
+@media (max-width:640px){.col-track{gap:10px}.col-tools{align-items:flex-start}}
 .card{position:relative;display:flex;flex-direction:column;min-width:0;padding:22px 24px 20px;border:1px solid var(--line);border-radius:6px;overflow:hidden;
   background:linear-gradient(170deg,rgba(22,18,33,.92),rgba(10,9,15,.96));transition:border-color .7s var(--ease),box-shadow .8s var(--ease)}
 .card::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 32%,rgba(247,230,179,.08) 46%,transparent 60%);
@@ -319,14 +319,25 @@ html.motion .kicker.in::before{transform:scaleX(1)}
 .ce-t{margin:0;font-family:var(--f-display);font-size:clamp(40px,4vw,60px);line-height:1.05;letter-spacing:-.02em}
 .ce-t em{color:var(--gold-hi)}
 .ce-ko{margin:0;color:var(--muted);font-size:14.5px}
-html.h-scroll .collection{height:100vh;height:100svh;padding-block:76px 24px;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
-html.h-scroll .col-head{width:100%;max-width:1280px;margin-inline:auto}
-html.h-scroll .col-progress{display:flex}
-html.h-scroll .col-track{display:flex;gap:18px;width:max-content;max-width:none;margin:0;
-  padding-left:max(var(--gutter),calc((100vw - 1280px) / 2 + var(--gutter)));padding-right:12vw}
-html.h-scroll .card{flex:none;width:clamp(300px,25vw,360px)}
-html.h-scroll .card-end{display:flex;flex:none;width:clamp(320px,30vw,440px)}
-@media (max-height:860px){html.h-scroll .card-gem{height:120px}html.h-scroll .gem{width:100px;height:100px}html.h-scroll .card-gem::before{width:140px;height:140px}html.h-scroll .card-no{font-size:38px}}
+/* four across on desktop (18 lots + the closing card fill 4 x 5), two across on phones */
+@media (min-width:900px){.card{padding:20px 20px 18px}.card-no{font-size:40px}.card-gem{height:150px}.card-name{font-size:clamp(22px,2vw,28px)}.card-line{font-size:13px}
+  .card-end{display:flex;grid-column:span 2;padding:32px}}
+@media (max-width:640px){
+  .card{padding:14px 12px 12px}
+  .card-no{font-size:28px}
+  .card .pill{height:20px;gap:5px;padding:0 7px;font-size:8.5px;letter-spacing:.12em}
+  .card-gem{height:112px;margin:0 0 6px}
+  .card-gem::before{width:120px;height:120px}
+  .gem{width:90px;height:90px}
+  .card-lot{font-size:8.5px;letter-spacing:.16em;line-height:1.5}
+  .card-name{margin:6px 0 3px;font-size:19px}
+  .card-kind{margin:0 0 8px;font-size:11.5px;line-height:1.5}
+  .card-line{margin:0 0 12px;font-size:12px;line-height:1.65}
+  .card-foot{padding-top:10px;gap:6px}
+  .card-cat{font-size:8.5px;letter-spacing:.14em}
+  .card-soon{gap:4px;font-size:11px}
+  .card-go{font-size:12px}
+}
 
 /* ---------- ledger ---------- */
 .ledger-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(36px,6vw,100px);align-items:start}
@@ -686,7 +697,6 @@ html.h-scroll .card-end{display:flex;flex:none;width:clamp(320px,30vw,440px)}
         </div>
         <div class="col-tools">
           <div class="filters" id="filters" role="group" aria-label="카테고리 필터"></div>
-          <div class="col-progress" aria-hidden="true"><span id="col-cur">01</span><i><b id="col-bar"></b></i><span id="col-total">18</span></div>
         </div>
       </div>
       <div class="col-track" id="track"></div>
@@ -1555,8 +1565,6 @@ void main(){
   filters.innerHTML = [['all', '전체', LOTS.length], ...ORDER.map(c => [c, CATS[c].ko, LOTS.filter(l => l.cat === c).length])]
     .map(([c, label, n]) => `<button class="chip" type="button" data-cat="${c}" aria-pressed="${c === 'all'}">${label}<b>${n}</b></button>`).join('');
 
-  $('#col-total').textContent = pad(LOTS.length);
-
   const isMac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
   if (!isMac) $$('[data-kbd]').forEach(k => { k.textContent = 'Ctrl K'; });
 
@@ -1646,14 +1654,11 @@ void main(){
   }));
 
   /* ---------- filters & jumping to a lot ---------- */
-  let hST = null;
-  const hDist = () => Math.max(0, track.scrollWidth - innerWidth);
   function applyFilter(cat) {
     $$('.chip', filters).forEach(b => b.setAttribute('aria-pressed', String(b.dataset.cat === cat)));
     cards.forEach(card => { card.hidden = cat !== 'all' && card.dataset.cat !== cat; });
-    $('#col-total').textContent = pad(visibleCards().length);
     if (MOTION) {
-      if (!hST) gsap.set(visibleCards(), { opacity: 1, y: 0 });
+      gsap.set(visibleCards(), { opacity: 1, y: 0 });
       ScrollTrigger.refresh();
     }
   }
@@ -1661,19 +1666,12 @@ void main(){
     const b = e.target.closest('.chip');
     if (!b) return;
     applyFilter(b.dataset.cat);
-    if (hST && scrollY > hST.start) scrollToY(hST.start, { duration: 1.2 });
   });
   function goToLot(lot) {
     applyFilter('all');
     const el = document.getElementById('lot-' + lot);
     if (!el) return;
-    if (hST) {
-      const d = hDist();
-      const x = Math.min(d, Math.max(0, el.offsetLeft + el.offsetWidth / 2 - innerWidth / 2));
-      scrollToY(hST.start + (d ? x / d : 0) * (hST.end - hST.start), { duration: 2.1 });
-    } else {
-      scrollToY(el.getBoundingClientRect().top + scrollY - (innerHeight - el.offsetHeight) / 2, { duration: 1.6 });
-    }
+    scrollToY(el.getBoundingClientRect().top + scrollY - (innerHeight - el.offsetHeight) / 2, { duration: 1.6 });
     el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash');
   }
 
@@ -1896,6 +1894,102 @@ void main(){
     } else if (light.follow) lightLux(pointer.x, pointer.y);
     renderGems(dt, t);
   }
+
+  /* ---------- spoiler mosaic ----------
+     Chrome and Firefox pixelate the sealed panel with the SVG filter. WebKit (Safari and every browser on iPhone and iPad)
+     and touch devices can drop that filter, which made the panel vanish, so there the same 17px mosaic is painted on a canvas. */
+  const ua = navigator.userAgent;
+  const mosaicCV = /iP(hone|ad|od)/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
+    || (/AppleWebKit/.test(ua) && !/Chrome|Chromium|CriOS|Edg|OPR|Android/.test(ua)) || matchMedia('(pointer: coarse)').matches;
+  if (mosaicCV) (() => {
+    const blocks = $$('.mosaic');
+    if (!blocks.length) return;
+    root.classList.add('mosaic-cv');
+    const B = 17, GOLD = 'rgb(226,194,127)';
+    const rgba = s => { const m = s && s.match(/rgba?\(([^)]+)\)/); if (!m) return null; const p = m[1].split(/[\s,\/]+/).filter(Boolean).map(parseFloat); return [p[0], p[1], p[2], p.length > 3 ? p[3] : 1]; };
+    const css = c => `rgba(${c[0]},${c[1]},${c[2]},${c[3]})`;
+    const work = document.createElement('canvas'), w = work.getContext('2d', { willReadFrequently: true }), range = document.createRange();
+    let failed = false;
+    const paint = M => {
+      let cv = [...M.children].find(c => c.classList.contains('mosaic-c'));
+      if (!cv) { cv = document.createElement('canvas'); cv.className = 'mosaic-c'; cv.setAttribute('aria-hidden', 'true'); M.appendChild(cv); }
+      const W = M.offsetWidth, H = M.offsetHeight;
+      if (!W || !H) return;
+      const R = M.getBoundingClientRect(), stop = M.parentElement;
+      const alpha = el => { let a = 1; for (let e = el; e && e !== stop; e = e.parentElement) a *= parseFloat(getComputedStyle(e).opacity); return a; };
+      work.width = W; work.height = H; w.clearRect(0, 0, W, H);
+      // 1) boxes: backgrounds, gradients and borders, the way the panel lays them out
+      $$('*', M).forEach(el => {
+        if (el === cv || el.closest('svg')) return;
+        const cs = getComputedStyle(el), b = el.getBoundingClientRect();
+        if (cs.display === 'none' || !b.width || !b.height) return;
+        const x = b.left - R.left, y = b.top - R.top, bw = b.width, bh = b.height, rad = Math.min(parseFloat(cs.borderTopLeftRadius) || 0, bw / 2, bh / 2);
+        const path = () => { w.beginPath(); w.moveTo(x + rad, y); w.arcTo(x + bw, y, x + bw, y + bh, rad); w.arcTo(x + bw, y + bh, x, y + bh, rad); w.arcTo(x, y + bh, x, y, rad); w.arcTo(x, y, x + bw, y, rad); w.closePath(); };
+        w.globalAlpha = alpha(el);
+        const clipText = /text/.test(cs.webkitBackgroundClip || '') || /text/.test(cs.backgroundClip || '');
+        const stops = !clipText && /gradient/.test(cs.backgroundImage) ? cs.backgroundImage.match(/rgba?\([^)]+\)/g) : null, bg = rgba(cs.backgroundColor);
+        if (stops && stops.length > 1) { const g = w.createLinearGradient(x, y, x + bw, y + bh); stops.forEach((c, i) => g.addColorStop(i / (stops.length - 1), c)); w.fillStyle = g; path(); w.fill(); }
+        else if (bg && bg[3] > 0) { w.fillStyle = css(bg); path(); w.fill(); }
+        const sides = ['Top', 'Right', 'Bottom', 'Left'].map(k => [parseFloat(cs['border' + k + 'Width']) || 0, rgba(cs['border' + k + 'Color'])]);
+        const on = ([sw, c]) => sw > 0 && c && c[3] > 0;
+        if (sides.every(on)) { w.strokeStyle = css(sides[0][1]); w.lineWidth = sides[0][0]; path(); w.stroke(); }
+        else sides.forEach((sd, i) => {
+          if (!on(sd)) return;
+          const sw = sd[0]; w.fillStyle = css(sd[1]);
+          if (i === 0) w.fillRect(x, y, bw, sw); else if (i === 1) w.fillRect(x + bw - sw, y, sw, bh); else if (i === 2) w.fillRect(x, y + bh - sw, bw, sw); else w.fillRect(x, y, sw, bh);
+        });
+      });
+      // 2) every glyph, at the exact spot the browser set it
+      const tw = document.createTreeWalker(M, NodeFilter.SHOW_TEXT);
+      for (let n = tw.nextNode(); n; n = tw.nextNode()) {
+        const t = n.textContent, el = n.parentElement;
+        if (!t.trim() || !el || el.closest('svg')) continue;
+        const cs = getComputedStyle(el);
+        let col = rgba(cs.webkitTextFillColor);
+        if (!col || !col[3]) col = rgba(cs.color);
+        w.fillStyle = col && col[3] ? css(col) : GOLD;
+        w.globalAlpha = alpha(el);
+        w.font = `${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+        w.textBaseline = 'alphabetic';
+        const fm = w.measureText('Hg가'), fs = parseFloat(cs.fontSize), asc = fm.fontBoundingBoxAscent || fs * .8, desc = fm.fontBoundingBoxDescent || fs * .2, up = cs.textTransform === 'uppercase';
+        for (let i = 0; i < t.length; i++) {
+          if (/\s/.test(t[i])) continue;
+          range.setStart(n, i); range.setEnd(n, i + 1);
+          const r = range.getClientRects()[0];
+          if (!r || !r.width) continue;
+          w.fillText(up ? t[i].toUpperCase() : t[i], r.left - R.left, r.top - R.top + r.height * asc / (asc + desc));
+        }
+      }
+      w.globalAlpha = 1;
+      // 3) pixelate: every 17px block becomes the average of what lies under it
+      const px = w.getImageData(0, 0, W, H).data, dpr = Math.min(2, devicePixelRatio || 1);
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); cv.style.width = W + 'px'; cv.style.height = H + 'px';
+      const o = cv.getContext('2d');
+      o.setTransform(dpr, 0, 0, dpr, 0, 0); o.clearRect(0, 0, W, H);
+      for (let y0 = 0; y0 < H; y0 += B) for (let x0 = 0; x0 < W; x0 += B) {
+        const x1 = Math.min(W, x0 + B), y1 = Math.min(H, y0 + B);
+        let r = 0, g = 0, b = 0, a = 0, k = 0;
+        for (let y = y0; y < y1; y++) for (let x = x0; x < x1; x++) { const i = (y * W + x) * 4, al = px[i + 3]; r += px[i] * al; g += px[i + 1] * al; b += px[i + 2] * al; a += al; k++; }
+        if (a < 1) continue;
+        o.fillStyle = `rgba(${Math.round(r / a)},${Math.round(g / a)},${Math.round(b / a)},${Math.min(1, a / k / 255 * 1.5).toFixed(3)})`;
+        o.fillRect(x0, y0, x1 - x0, y1 - y0);
+      }
+    };
+    const paintAll = () => {
+      if (failed) return;
+      try { blocks.forEach(paint); }
+      catch (e) {
+        // last resort: a plain blur, which every browser draws
+        failed = true; root.classList.remove('mosaic-cv'); root.classList.add('mosaic-blur'); $$('canvas.mosaic-c').forEach(c => c.remove());
+      }
+    };
+    let queued = 0;
+    const later = () => { cancelAnimationFrame(queued); queued = requestAnimationFrame(paintAll); };
+    paintAll();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(later).catch(() => {});
+    if ('ResizeObserver' in window) { const ro = new ResizeObserver(later); blocks.forEach(M => ro.observe(M)); }
+    else addEventListener('resize', later);
+  })();
 
   /* ---------- sound: heel clicks in the intro, a quiet classical theme once the crest appears ---------- */
   const Sound = (() => {
@@ -2390,6 +2484,7 @@ void main(){
   ScrollTrigger.batch('.kicker', { start: 'top 90%', onEnter: b => b.forEach(k => k.classList.add('in')) });
   $$('[data-reveal]').forEach(el => gsap.from(el, { y: 30, opacity: 0, duration: 1.8, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%' } }));
   $$('[data-split]').forEach(h => {
+    if (mosaicCV && h.closest('.mosaic')) return;
     const ws = splitWords(h);
     gsap.from(ws, { yPercent: 115, rotate: 3, duration: 1.8, ease: 'power4.out', stagger: .07, scrollTrigger: { trigger: h, start: 'top 88%' } });
   });
@@ -2401,38 +2496,18 @@ void main(){
   });
   gsap.fromTo('.tcard.t0', { '--r': '0deg' }, { '--r': '-15deg', ease: 'none', scrollTrigger: { trigger: '.ft-tarot', start: 'top 85%', end: 'center 55%', scrub: .9 } });
   gsap.fromTo('.tcard.t2', { '--r': '0deg' }, { '--r': '15deg', ease: 'none', scrollTrigger: { trigger: '.ft-tarot', start: 'top 85%', end: 'center 55%', scrub: .9 } });
-  gsap.from('#ticket', { y: 80, rotate: -12, opacity: 0, duration: 2.2, ease: 'power3.out', scrollTrigger: { trigger: '.ft-ryl', start: 'top 70%' } });
-  const tk = $('#tk-num'), tkv = { v: 0 };
-  gsap.to(tkv, { v: 87, duration: 2.6, ease: 'power3.out', scrollTrigger: { trigger: '.ft-ryl', start: 'top 70%' }, onUpdate: () => { tk.textContent = Math.round(tkv.v); } });
-  gsap.from('.ryl-list li', { x: -20, opacity: 0, duration: 1.4, ease: 'power3.out', stagger: .12, scrollTrigger: { trigger: '.ryl-list', start: 'top 85%' } });
+  // under the painted mosaic the hidden panel stays still, so the canvas always matches it
+  if (!mosaicCV) {
+    gsap.from('#ticket', { y: 80, rotate: -12, opacity: 0, duration: 2.2, ease: 'power3.out', scrollTrigger: { trigger: '.ft-ryl', start: 'top 70%' } });
+    const tk = $('#tk-num'), tkv = { v: 0 };
+    gsap.to(tkv, { v: 87, duration: 2.6, ease: 'power3.out', scrollTrigger: { trigger: '.ft-ryl', start: 'top 70%' }, onUpdate: () => { tk.textContent = Math.round(tkv.v); } });
+    gsap.from('.ryl-list li', { x: -20, opacity: 0, duration: 1.4, ease: 'power3.out', stagger: .12, scrollTrigger: { trigger: '.ryl-list', start: 'top 85%' } });
+  }
 
-  /* collection: a pinned horizontal run on big screens, a revealed grid elsewhere */
-  const mm = gsap.matchMedia();
-  mm.add('(min-width: 900px) and (min-height: 700px)', () => {
-    root.classList.add('h-scroll');
-    const cur = $('#col-cur'), cbar = $('#col-bar');
-    const tween = gsap.to(track, {
-      x: () => -hDist(), ease: 'none',
-      scrollTrigger: {
-        trigger: '#collection', start: 'top top', end: () => '+=' + hDist(), pin: true, scrub: 1.3, invalidateOnRefresh: true,
-        onUpdate: self => {
-          const n = visibleCards().length;
-          cur.textContent = pad(Math.min(n, Math.round(self.progress * Math.max(0, n - 1)) + 1));
-          cbar.style.transform = `scaleX(${self.progress})`;
-        }
-      }
-    });
-    hST = tween.scrollTrigger;
-    cards.forEach(card => {
-      gsap.from(card, { opacity: .3, scale: .955, ease: 'none',
-        scrollTrigger: { trigger: card, containerAnimation: tween, start: 'left 108%', end: 'left 66%', scrub: true } });
-    });
-    return () => { root.classList.remove('h-scroll'); hST = null; };
-  });
-  mm.add('(max-width: 899px), (max-height: 699px)', () => {
-    gsap.set(cards, { opacity: 0, y: 40 });
-    ScrollTrigger.batch(cards, { start: 'top 92%', onEnter: b => gsap.to(b, { opacity: 1, y: 0, duration: 1.4, ease: 'power3.out', stagger: .12, overwrite: true }) });
-  });
+  /* collection: a grid on every screen, each row rising into place */
+  const rise = [...cards, $('.card-end', track)];
+  gsap.set(rise, { opacity: 0, y: 40 });
+  ScrollTrigger.batch(rise, { start: 'top 92%', onEnter: b => gsap.to(b, { opacity: 1, y: 0, duration: 1.4, ease: 'power3.out', stagger: .12, overwrite: true }) });
 
   /* ledger */
   $$('.ledger tbody tr').forEach(tr => {
