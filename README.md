@@ -15,7 +15,7 @@
 - **Music**: 로고가 나타나는 순간 은은하고 몽환적인 클래식 선율(직접 작곡한 D단조 왈츠, Web Audio로 실시간 연주)이 깔림. 브라우저가 자동 재생을 막으면 화면을 처음 누르는 순간 시작되고, 왼쪽 아래 `Music` 버튼으로 끄고 켤 수 있음
 - **Members**: 회원가입 / 로그인과 Treasure Passport(18개 사이트 중 가입한 곳을 보석으로 표시)
 - **Notice**: 같은 계정·이메일로 18개 사이트에 모두 가입하면 보물을 모두 모은 것으로 인정되어 각 사이트에서 블랙코인 500개를 준다는 공지
-- **On Display**: 운영 중인 JBlack Tarot, 다음 공개작 Rate Your Life(공개 전이라 문구 한 줄만 남기고 모자이크 처리)
+- **On Display**: 운영 중인 JBlack Tarot, 다음 공개작 TOP 1(공개 전이라 문구 한 줄만 남기고 모자이크 처리)
 - **The Collection**: 18개 작품을 데스크톱 4열 · 모바일 2열 그리드로 보여 주고, 카테고리로 걸러 볼 수 있음
 - **The Ledger**: 사람들이 지친 것과 트레저리의 기준
 - **Contact**: 누르면 이메일 주소(n6248129@gmail.com)가 복사됨
@@ -40,7 +40,7 @@ const AUTH_CONFIG = { supabaseUrl: 'https://xxxx.supabase.co', supabaseAnonKey: 
 `index.html` 안의 `LOTS` 목록에서 해당 작품의 `status`를 `'open'`으로 바꾸고 `url`에 주소를 넣으면, 카드와 바로가기 창, 개수 표시가 함께 바뀝니다.
 
 ```js
-{ lot: '02', name: 'Rate Your Life', ..., status: 'open', url: 'https://example.com/' }
+{ lot: '02', name: 'TOP 1', ..., status: 'open', url: 'https://example.com/' }
 ```
 
 ## 배포
